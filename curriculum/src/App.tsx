@@ -1,23 +1,16 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import {
-	Button,
-	List,
-	ListItem,
-	ListItemButton,
-	ListItemText,
-	Stack,
-	Tab,
-	Tabs,
-	ThemeProvider,
-	createTheme,
-} from "@mui/material";
-import { VscChevronDown, VscGithubAlt, VscAccount, VscRemote, VscSourceControl, VscCheckAll } from "react-icons/vsc";
+import { Button, List, Stack, Tab, Tabs, ThemeProvider, createTheme } from "@mui/material";
+import { VscChevronDown, VscGithubAlt, VscRemote, VscSourceControl, VscCheckAll } from "react-icons/vsc";
 import { AiFillLinkedin, AiOutlineGithub } from "react-icons/ai";
 import { FaEnvelope } from "react-icons/fa";
 import Contact from "./components/contact";
 import Welcome from "./components/welcome";
+import About from "./components/about";
+import DevStack from "./components/stack";
+import Skills from "./components/skills";
+import Projects from "./components/projects";
 
 const theme = createTheme({
 	typography: {
@@ -29,7 +22,7 @@ const theme = createTheme({
 });
 
 const App = () => {
-	type tabs = "bemVindo.html" | "sobre.tsx" | "contato.ts" | "stack.py" | "habilidades.rb" | "projetos.js";
+	type tabs = "bemVindo.html" | "sobre.tsx" | "contato.ts" | "devStack.py" | "habilidades.rb" | "projetos.js";
 	const [currentTab, setCurrentTab] = React.useState<tabs>("bemVindo.html");
 
 	const handleTabOnChange = (_e: React.SyntheticEvent, newTab: tabs) => {
@@ -39,19 +32,19 @@ const App = () => {
 	let displayTab;
 	switch (currentTab) {
 		case "sobre.tsx":
-			displayTab = <Contact />;
+			displayTab = <About />;
 			break;
 		case "contato.ts":
 			displayTab = <Contact />;
 			break;
-		case "stack.py":
-			displayTab = <Contact />;
+		case "devStack.py":
+			displayTab = <DevStack />;
 			break;
 		case "habilidades.rb":
-			displayTab = <Contact />;
+			displayTab = <Skills />;
 			break;
 		case "projetos.js":
-			displayTab = <Contact />;
+			displayTab = <Projects />;
 			break;
 		default:
 			displayTab = <Welcome />;
@@ -64,11 +57,13 @@ const App = () => {
 				sx={{
 					bgcolor: "#1d232f",
 					height: "4vh",
-					width: "100vw",
+					width: "99vw",
 					color: "white",
 					textAlign: "center",
 					justifyContent: "center",
 					pt: 0.5,
+					fontFamily: "Arial",
+					fontSize: 15,
 				}}
 			>
 				{currentTab} - Amanda F. I. - Currículo
@@ -85,14 +80,17 @@ const App = () => {
 						<Button color="secondary">
 							<FaEnvelope size={24} style={{ fill: "#a8b5d1", margin: "6px 13px 6px 8px" }} />
 						</Button>
-						<Button color="secondary">
+						{/* <Button color="secondary">
 							<VscGithubAlt size={32} style={{ fill: "#a8b5d1", margin: "6px 13px 6px 8px" }} />
-						</Button>
+						</Button> */}
 					</Grid>
 					<Grid item xs={2} sx={{ bgcolor: "#171c26", color: "white" }}>
 						<List>
 							<ThemeProvider theme={theme}>
-								<Button size="medium" sx={{ color: "white", width: "100%", textAlign: "left", justifyContent: "left" }}>
+								<Button
+									size="medium"
+									sx={{ color: "white", width: "100%", textAlign: "left", justifyContent: "left", fontSize: 17 }}
+								>
 									<VscChevronDown /> &nbsp; Curriculum
 								</Button>
 								{/* <ListItem disablePadding>
@@ -108,31 +106,31 @@ const App = () => {
 
 								<Button
 									size="medium"
-									sx={{ color: "white", width: "100%", textAlign: "left", justifyContent: "left" }}
+									sx={{ color: "white", width: "100%", textAlign: "left", justifyContent: "left", fontSize: 17 }}
 									onClick={() => setCurrentTab("sobre.tsx")}
 								>
 									<i className="devicon-react-original colored" style={{ margin: "3px" }}></i>&nbsp; sobre.tsx
 								</Button>
 								<Button
-									sx={{ color: "white", width: "100%", textAlign: "left", justifyContent: "left" }}
+									sx={{ color: "white", width: "100%", textAlign: "left", justifyContent: "left", fontSize: 17 }}
 									onClick={() => setCurrentTab("contato.ts")}
 								>
 									<i className="devicon-typescript-plain colored" style={{ margin: "3px" }}></i>&nbsp; contato.ts
 								</Button>
 								<Button
-									sx={{ color: "white", width: "100%", textAlign: "left", justifyContent: "left" }}
-									onClick={() => setCurrentTab("stack.py")}
+									sx={{ color: "white", width: "100%", textAlign: "left", justifyContent: "left", fontSize: 17 }}
+									onClick={() => setCurrentTab("devStack.py")}
 								>
-									<i className="devicon-python-plain colored" style={{ margin: "3px" }}></i>&nbsp; stack.py
+									<i className="devicon-python-plain colored" style={{ margin: "3px" }}></i>&nbsp; devStack.py
 								</Button>
 								<Button
-									sx={{ color: "white", width: "100%", textAlign: "left", justifyContent: "left" }}
+									sx={{ color: "white", width: "100%", textAlign: "left", justifyContent: "left", fontSize: 17 }}
 									onClick={() => setCurrentTab("habilidades.rb")}
 								>
 									<i className="devicon-ruby-plain colored" style={{ margin: "3px" }}></i>&nbsp; habilidades.rb
 								</Button>
 								<Button
-									sx={{ color: "white", width: "100%", textAlign: "left", justifyContent: "left" }}
+									sx={{ color: "white", width: "100%", textAlign: "left", justifyContent: "left", fontSize: 17 }}
 									onClick={() => setCurrentTab("projetos.js")}
 								>
 									<i className="devicon-javascript-plain colored" style={{ margin: "3px" }}></i>&nbsp; projetos.ts
@@ -189,7 +187,7 @@ const App = () => {
 									value="sobre.tsx"
 									label={
 										<Stack direction="row">
-											<i className="devicon-javascript-plain colored"></i>
+											<i className="devicon-react-original colored"></i>
 											&nbsp; sobre.tsx
 										</Stack>
 									}
@@ -204,11 +202,11 @@ const App = () => {
 									}
 								/>
 								<Tab
-									value="stack.py"
+									value="devStack.py"
 									label={
 										<Stack direction="row">
 											<i className="devicon-python-plain colored"></i>
-											&nbsp; stack.py
+											&nbsp; devStack.py
 										</Stack>
 									}
 								/>
@@ -237,38 +235,65 @@ const App = () => {
 				</Grid>
 			</Box>
 			<ThemeProvider theme={theme}>
-				<Box
+				<Stack
+					direction="row"
 					sx={{
-						bgcolor: "#1d232f",
+						bgcolor: "#171c26",
 						height: "4vh",
-						width: "100vw",
+						width: "99vw",
 						color: "white",
+						fontFamily: "Arial",
+						fontSize: 15,
+						justifyContent: "space-evenly",
 					}}
 				>
-					<Button
+					<Stack
+						direction="row"
 						sx={{
-							bgcolor: "#457dff",
+							bgcolor: "#171c26",
+							width: "50vw",
 							color: "white",
-							height: "4vh",
+							fontFamily: "Arial",
+							fontSize: 15,
 						}}
 					>
-						<VscRemote />
-						&nbsp; WSL: Ubuntu
-					</Button>
-					<Button
+						<Button
+							sx={{
+								bgcolor: "#457dff",
+								color: "white",
+							}}
+						>
+							<VscRemote />
+							&nbsp; WSL: Ubuntu
+						</Button>
+						<Button
+							sx={{
+								bgcolor: "#171c26",
+								color: "white",
+							}}
+						>
+							<VscSourceControl />
+							&nbsp; main
+						</Button>
+					</Stack>
+					<Stack
+						direction="row"
 						sx={{
-							bgcolor: "#1d232f",
-							color: "white",
+							bgcolor: "#171c26",
 							height: "4vh",
+							width: "50vw",
+							color: "white",
+							fontFamily: "Arial",
+							fontSize: 15,
+							justifyContent: "end",
+							pr: 3,
+							// pt: 1,
 						}}
 					>
-						<VscSourceControl />
-						&nbsp; main
-					</Button>
-					&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;{" "}
-					<i className="devicon-react-original"></i> &nbsp;Feito com React &nbsp; &nbsp; &nbsp; &nbsp;
-					<VscCheckAll /> &nbsp;Prettier
-				</Box>
+						<i className="devicon-react-original"></i> &nbsp;Feito com React &nbsp; &nbsp;
+						<VscCheckAll /> &nbsp;Prettier
+					</Stack>
+				</Stack>
 			</ThemeProvider>
 		</>
 	);
