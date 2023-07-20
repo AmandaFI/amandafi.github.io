@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import { Button, List, Stack, Tab, Tabs, ThemeProvider, createTheme } from "@mui/material";
@@ -21,277 +22,233 @@ const theme = createTheme({
 	},
 });
 
-const App = () => {
-	type tabs = "bemVindo.html" | "sobre.tsx" | "contato.ts" | "devStack.py" | "habilidades.rb" | "projetos.js";
-	const [currentTab, setCurrentTab] = React.useState<tabs>("bemVindo.html");
+const leftColumnIconStyle = {
+	fill: "#a8b5d1",
+	margin: "6px 13px 6px 8px",
+};
 
-	const handleTabOnChange = (_e: React.SyntheticEvent, newTab: tabs) => {
+const filesColumnStye = {
+	color: "white",
+	width: "100%",
+	textAlign: "left",
+	justifyContent: "left",
+	fontSize: 17,
+};
+
+type Tabs = "bemVindo.html" | "sobre.tsx" | "contato.ts" | "devStack.py" | "habilidades.rb" | "projetos.js";
+
+const LEFT_COLUMN_ITEMS = [
+	<AiFillLinkedin size={32} style={leftColumnIconStyle} />,
+	<AiOutlineGithub size={32} style={leftColumnIconStyle} />,
+	<FaEnvelope size={24} style={leftColumnIconStyle} />,
+];
+
+type displayIconsType = {
+	icon: JSX.Element;
+	text: string;
+};
+
+const FILES_COLUMN_ITEMS: displayIconsType[] = [
+	{ icon: <i className="devicon-react-original colored" style={{ margin: "3px" }}></i>, text: "sobre.tsx" },
+	{ icon: <i className="devicon-typescript-plain colored" style={{ margin: "3px" }}></i>, text: "contato.ts" },
+	{ icon: <i className="devicon-python-plain colored" style={{ margin: "3px" }}></i>, text: "devStack.py" },
+	{ icon: <i className="devicon-ruby-plain colored" style={{ margin: "3px" }}></i>, text: "habilidades.rb" },
+	{ icon: <i className="devicon-javascript-plain colored" style={{ margin: "3px" }}></i>, text: "projetos.js" },
+];
+
+const INITIAL_OPEN_TABS: displayIconsType[] = [
+	{ icon: <i className="devicon-html5-plain colored"></i>, text: "bemVindo.html" },
+	{ icon: <i className="devicon-react-original colored"></i>, text: "sobre.tsx" },
+	{ icon: <i className="devicon-typescript-plain colored"></i>, text: "contato.ts" },
+	{ icon: <i className="devicon-python-plain colored"></i>, text: "devStack.py" },
+	{ icon: <i className="devicon-ruby-plain colored"></i>, text: "habilidades.rb" },
+	{ icon: <i className="devicon-javascript-plain colored"></i>, text: "projetos.js" },
+];
+
+const App = () => {
+	const [currentTab, setCurrentTab] = useState<displayIconsType>(INITIAL_OPEN_TABS[0]);
+	const [openTabs, setOpenTabs] = useState<displayIconsType[]>(INITIAL_OPEN_TABS);
+
+	const handleTabOnChange = (_e: React.SyntheticEvent, newTab: displayIconsType) => {
 		setCurrentTab(newTab);
 	};
 
-	let displayTab;
-	switch (currentTab) {
+	let selectedTab;
+	switch (currentTab.text) {
 		case "sobre.tsx":
-			displayTab = <About />;
+			selectedTab = <About />;
 			break;
 		case "contato.ts":
-			displayTab = <Contact />;
+			selectedTab = <Contact />;
 			break;
 		case "devStack.py":
-			displayTab = <DevStack />;
+			selectedTab = <DevStack />;
 			break;
 		case "habilidades.rb":
-			displayTab = <Skills />;
+			selectedTab = <Skills />;
 			break;
 		case "projetos.js":
-			displayTab = <Projects />;
+			selectedTab = <Projects />;
 			break;
 		default:
-			displayTab = <Welcome />;
+			selectedTab = <Welcome />;
 			break;
 	}
 
 	return (
 		<>
-			<Box
-				sx={{
-					bgcolor: "#1d232f",
-					height: "4vh",
-					width: "99vw",
-					color: "white",
-					textAlign: "center",
-					justifyContent: "center",
-					pt: 0.5,
-					fontFamily: "Arial",
-					fontSize: 15,
-				}}
-			>
-				{currentTab} - Amanda F. I. - Currículo
-			</Box>
-			<Box sx={{ flexGrow: 1 }}>
-				<Grid container height={"88vh"}>
-					<Grid item xs={0.5} sx={{ bgcolor: "#141820", color: "white" }}>
-						<Button color="secondary">
-							<AiFillLinkedin size={32} style={{ fill: "#a8b5d1", margin: "6px 13px 6px 8px" }} />
-						</Button>
-						<Button color="secondary">
-							<AiOutlineGithub size={32} style={{ fill: "#a8b5d1", margin: "6px 13px 6px 8px" }} />
-						</Button>
-						<Button color="secondary">
-							<FaEnvelope size={24} style={{ fill: "#a8b5d1", margin: "6px 13px 6px 8px" }} />
-						</Button>
-						{/* <Button color="secondary">
-							<VscGithubAlt size={32} style={{ fill: "#a8b5d1", margin: "6px 13px 6px 8px" }} />
-						</Button> */}
-					</Grid>
-					<Grid item xs={2} sx={{ bgcolor: "#171c26", color: "white" }}>
-						<List>
-							<ThemeProvider theme={theme}>
+			<ThemeProvider theme={theme}>
+				<Stack
+					direction="column"
+					sx={{
+						height: "97vh",
+						display: "flex",
+						flexDirection: "column",
+						bgcolor: "yellow",
+					}}
+				>
+					<Box
+						sx={{
+							bgcolor: "#1d232f",
+							height: "4vh",
+							// width: "99vw",
+							color: "white",
+							textAlign: "center",
+							justifyContent: "center",
+							pt: 0.5,
+							fontFamily: "Arial",
+							fontSize: 15,
+							display: "flex",
+						}}
+					>
+						{currentTab.text} - Amanda F. I. - Currículo
+					</Box>
+
+					<Grid container sx={{ height: "100%", overflow: "auto" }}>
+						<Grid item xs={0.5} sx={{ bgcolor: "#141820", color: "white" }}>
+							{LEFT_COLUMN_ITEMS.map((icon) => (
+								<Button color="secondary"> {icon} </Button>
+							))}
+						</Grid>
+
+						<Grid item xs={2} sx={{ bgcolor: "#171c26", color: "white", display: "flex", flexDirection: "row" }}>
+							<List sx={{ display: "flex", flexDirection: "column" }}>
 								<Button
 									size="medium"
-									sx={{ color: "white", width: "100%", textAlign: "left", justifyContent: "left", fontSize: 17 }}
+									sx={{
+										color: "white",
+										width: "100%",
+										textAlign: "left",
+										justifyContent: "left",
+										fontSize: 17,
+										display: "flex",
+									}}
 								>
 									<VscChevronDown /> &nbsp; Curriculum
 								</Button>
-								{/* <ListItem disablePadding>
-									<ListItemText
-										primary={
-											<>
-												<VscChevronDown /> Curriculum
-											</>
-										}
-										sx={{ color: "white", ml: 1, mb: 1 }}
-									/>
-								</ListItem> */}
 
-								<Button
-									size="medium"
-									sx={{ color: "white", width: "100%", textAlign: "left", justifyContent: "left", fontSize: 17 }}
-									onClick={() => setCurrentTab("sobre.tsx")}
-								>
-									<i className="devicon-react-original colored" style={{ margin: "3px" }}></i>&nbsp; sobre.tsx
-								</Button>
-								<Button
-									sx={{ color: "white", width: "100%", textAlign: "left", justifyContent: "left", fontSize: 17 }}
-									onClick={() => setCurrentTab("contato.ts")}
-								>
-									<i className="devicon-typescript-plain colored" style={{ margin: "3px" }}></i>&nbsp; contato.ts
-								</Button>
-								<Button
-									sx={{ color: "white", width: "100%", textAlign: "left", justifyContent: "left", fontSize: 17 }}
-									onClick={() => setCurrentTab("devStack.py")}
-								>
-									<i className="devicon-python-plain colored" style={{ margin: "3px" }}></i>&nbsp; devStack.py
-								</Button>
-								<Button
-									sx={{ color: "white", width: "100%", textAlign: "left", justifyContent: "left", fontSize: 17 }}
-									onClick={() => setCurrentTab("habilidades.rb")}
-								>
-									<i className="devicon-ruby-plain colored" style={{ margin: "3px" }}></i>&nbsp; habilidades.rb
-								</Button>
-								<Button
-									sx={{ color: "white", width: "100%", textAlign: "left", justifyContent: "left", fontSize: 17 }}
-									onClick={() => setCurrentTab("projetos.js")}
-								>
-									<i className="devicon-javascript-plain colored" style={{ margin: "3px" }}></i>&nbsp; projetos.ts
-								</Button>
-							</ThemeProvider>
-							{/* <ListItem disablePadding sx={{ pl: 2 }}>
-								<i className="devicon-react-original colored"></i>
-								<ListItemText primary={"sobre.tsx"} sx={{ color: "white", ml: 1 }} />
-							</ListItem> */}
-							{/* <ListItem disablePadding sx={{ pl: 2 }}>
-								<i className="devicon-typescript-plain colored"></i>
-								<ListItemText primary={"contato.ts"} sx={{ color: "white", ml: 1 }} />
-							</ListItem> */}
-
-							{/* <ListItem disablePadding sx={{ pl: 2 }}>
-								<ListItemButton>
-								<i className="devicon-python-plain colored"></i>
-								<ListItemText primary={"stack.py"} sx={{ color: "white", ml: 1 }} />
-								</ListItemButton>
-							</ListItem>
-							<ListItem disablePadding sx={{ pl: 2 }}>
-								<ListItemButton>
-								<i className="devicon-ruby-plain colored"></i>
-								<ListItemText primary={"habilidades.rb"} sx={{ color: "white", ml: 1 }} />
-								</ListItemButton>
-							</ListItem>
-							<ListItem disablePadding sx={{ pl: 2 }}>
-								<ListItemButton>
-								<i className="devicon-javascript-plain colored"></i>
-								<ListItemText primary={"projetos.js"} sx={{ color: "white", ml: 1 }} />
-								</ListItemButton>
-							</ListItem> */}
-						</List>
-					</Grid>
-					<Grid item xs={9.5} sx={{ bgcolor: "#171c26", color: "white" }}>
-						<ThemeProvider theme={theme}>
+								{FILES_COLUMN_ITEMS.map((item, index) => (
+									<Button sx={filesColumnStye} onClick={() => setCurrentTab(openTabs[index])}>
+										{item.icon}
+										&nbsp;
+										{item.text}
+									</Button>
+								))}
+							</List>
+						</Grid>
+						<Grid item xs={9.5} sx={{ bgcolor: "#171c26", color: "white" }}>
 							<Tabs
 								value={currentTab}
 								onChange={handleTabOnChange}
 								textColor="inherit"
-								// indicatorColor="primary"
 								aria-label="secondary tabs example"
 							>
-								<Tab
-									value="bemVindo.html"
-									label={
-										<Stack direction="row">
-											<i className="devicon-html5-plain colored"></i>
-											&nbsp; bemVindo.html
-										</Stack>
-									}
-								/>
-								<Tab
-									value="sobre.tsx"
-									label={
-										<Stack direction="row">
-											<i className="devicon-react-original colored"></i>
-											&nbsp; sobre.tsx
-										</Stack>
-									}
-								/>
-								<Tab
-									value="contato.ts"
-									label={
-										<Stack direction="row">
-											<i className="devicon-typescript-plain colored"></i>
-											&nbsp; contato.ts
-										</Stack>
-									}
-								/>
-								<Tab
-									value="devStack.py"
-									label={
-										<Stack direction="row">
-											<i className="devicon-python-plain colored"></i>
-											&nbsp; devStack.py
-										</Stack>
-									}
-								/>
-								<Tab
-									value="habilidades.rb"
-									label={
-										<Stack direction="row">
-											<i className="devicon-ruby-plain colored"></i>
-											&nbsp; habilidades.rb
-										</Stack>
-									}
-								/>
-								<Tab
-									value="projetos.js"
-									label={
-										<Stack direction="row">
-											<i className="devicon-javascript-plain colored"></i>
-											&nbsp; projetos.js
-										</Stack>
-									}
-								/>
+								{openTabs.map((item) => (
+									<Tab
+										value={item}
+										label={
+											<Stack direction="row">
+												{item.icon}
+												&nbsp;
+												{item.text}
+											</Stack>
+										}
+									/>
+								))}
 							</Tabs>
-						</ThemeProvider>
-						{displayTab}
+							{selectedTab}
+						</Grid>
 					</Grid>
-				</Grid>
-			</Box>
-			<ThemeProvider theme={theme}>
-				<Stack
-					direction="row"
-					sx={{
-						bgcolor: "#171c26",
-						height: "4vh",
-						width: "99vw",
-						color: "white",
-						fontFamily: "Arial",
-						fontSize: 15,
-						justifyContent: "space-evenly",
-					}}
-				>
-					<Stack
-						direction="row"
-						sx={{
-							bgcolor: "#171c26",
-							width: "50vw",
-							color: "white",
-							fontFamily: "Arial",
-							fontSize: 15,
-						}}
-					>
-						<Button
-							sx={{
-								bgcolor: "#457dff",
-								color: "white",
-							}}
-						>
-							<VscRemote />
-							&nbsp; WSL: Ubuntu
-						</Button>
-						<Button
-							sx={{
-								bgcolor: "#171c26",
-								color: "white",
-							}}
-						>
-							<VscSourceControl />
-							&nbsp; main
-						</Button>
-					</Stack>
+
 					<Stack
 						direction="row"
 						sx={{
 							bgcolor: "#171c26",
 							height: "4vh",
-							width: "50vw",
+							width: "99vw",
 							color: "white",
 							fontFamily: "Arial",
 							fontSize: 15,
-							justifyContent: "end",
-							pr: 3,
-							// pt: 1,
+							justifyContent: "space-evenly",
 						}}
 					>
-						<i className="devicon-react-original"></i> &nbsp;Feito com React &nbsp; &nbsp;
-						<VscCheckAll /> &nbsp;Prettier
+						<Stack
+							direction="row"
+							sx={{
+								bgcolor: "#171c26",
+								width: "100%",
+								color: "white",
+								fontFamily: "Arial",
+								fontSize: 15,
+							}}
+						>
+							<Stack
+								direction="row"
+								sx={{
+									bgcolor: "#171c26",
+									width: "50vw",
+									color: "white",
+									fontFamily: "Arial",
+									fontSize: 15,
+								}}
+							>
+								<Button
+									sx={{
+										bgcolor: "#457dff",
+										color: "white",
+									}}
+								>
+									<VscRemote />
+									&nbsp; WSL: Ubuntu
+								</Button>
+								<Button
+									sx={{
+										bgcolor: "#171c26",
+										color: "white",
+									}}
+								>
+									<VscSourceControl />
+									&nbsp; main
+								</Button>
+							</Stack>
+							<Stack
+								direction="row"
+								sx={{
+									bgcolor: "#171c26",
+									height: "4vh",
+									width: "50vw",
+									color: "white",
+									fontFamily: "Arial",
+									fontSize: 15,
+									justifyContent: "end",
+									pr: 3,
+									// pt: 1,
+								}}
+							>
+								<i className="devicon-react-original"></i> &nbsp;Feito com React &nbsp; &nbsp;
+								<VscCheckAll /> &nbsp;Prettier
+							</Stack>
+						</Stack>
 					</Stack>
 				</Stack>
 			</ThemeProvider>

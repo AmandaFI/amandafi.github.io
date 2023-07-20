@@ -11,7 +11,7 @@ const theme = createTheme({
 const Welcome = () => {
 	return (
 		<>
-			<Stack direction="column" sx={{ bgcolor: "#1d232f", display: "flex", height: "96%", alignItems: "center" }}>
+			<Stack direction="column" sx={{ bgcolor: "#1d232f", display: "flex", height: "92%", alignItems: "center" }}>
 				<Typography variant="h3" component="h3" sx={{ display: "flex", alignItems: "center", mt: "11rem" }}>
 					Amanda Ferrari Iaquinta
 				</Typography>

@@ -24,30 +24,29 @@ import { CodeSection } from "react-code-section-lib";
 
 const Contact = () => {
 	const value = `type Contato = "E-mail" | "Telefone" | "Linkedin" | "GitHub"
-
 let contactar: Contato = "E-mail"
-let info: String;
 
 switch (contactar) {
 	case "E-mail":
-		info = "a.ferrari.iaquinta@gmail.com";
+		console.log("a.ferrari.iaquinta@gmail.com");
 		break;
 	case "Telefone":
-		info = "+55(19) 99960-1705";
+		console.log("+55(19) 99960-1705");
 		break;
 	case "Linkedin":
-		info = "https://www.linkedin.com/in/amandafi/"
+		console.log("https://www.linkedin.com/in/amandafi/")
 		break;
 	case "GitHub":
-		info = "https://github.com/AmandaFI"
+		console.log("https://github.com/AmandaFI");
+		break;
+	default: 
+		console.log("")
 		break;
 }
-	
-	
 	`;
 
 	return (
-		<Box sx={{ bgcolor: "#1d232f", fontSize: 17, fontFamily: "Fira Code, monospace;", lineHeight: 0.5 }}>
+		<Box sx={{ bgcolor: "#282a36", fontSize: 18, fontFamily: "Fira Code, monospace;", lineHeight: 0.5 }}>
 			{/* <CodeSection showLineNumbers={true} theme={"dark"} lang={"typescript"}>
 				{value}
 			</CodeSection> */}
