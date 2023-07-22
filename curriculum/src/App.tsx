@@ -1,257 +1,179 @@
 import * as React from "react";
-import { useState } from "react";
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
-import { Button, List, Stack, Tab, Tabs, ThemeProvider, createTheme } from "@mui/material";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import { VscChevronDown, VscGithubAlt, VscRemote, VscSourceControl, VscCheckAll } from "react-icons/vsc";
 import { AiFillLinkedin, AiOutlineGithub } from "react-icons/ai";
 import { FaEnvelope } from "react-icons/fa";
+import Button from "react-bootstrap/Button";
+import { useState } from "react";
+import Tab from "react-bootstrap/Tab";
+import Tabs from "react-bootstrap/Tabs";
 import Contact from "./components/contact";
 import Welcome from "./components/welcome";
 import About from "./components/about";
 import DevStack from "./components/stack";
 import Skills from "./components/skills";
 import Projects from "./components/projects";
+import Stack from "react-bootstrap/Stack";
 
-const theme = createTheme({
-	typography: {
-		button: {
-			textTransform: "none",
-			color: "white",
-		},
-	},
-});
-
-const leftColumnIconStyle = {
-	fill: "#a8b5d1",
-	margin: "6px 13px 6px 8px",
-};
-
-const filesColumnStye = {
-	color: "white",
-	width: "100%",
-	textAlign: "left",
-	justifyContent: "left",
-	fontSize: 17,
-};
+import "./App.css";
 
 type Tabs = "bemVindo.html" | "sobre.tsx" | "contato.ts" | "devStack.py" | "habilidades.rb" | "projetos.js";
-
-const LEFT_COLUMN_ITEMS = [
-	<AiFillLinkedin size={32} style={leftColumnIconStyle} />,
-	<AiOutlineGithub size={32} style={leftColumnIconStyle} />,
-	<FaEnvelope size={24} style={leftColumnIconStyle} />,
-];
 
 type displayIconsType = {
 	icon: JSX.Element;
 	text: string;
 };
 
-const FILES_COLUMN_ITEMS: displayIconsType[] = [
-	{ icon: <i className="devicon-react-original colored" style={{ margin: "3px" }}></i>, text: "sobre.tsx" },
-	{ icon: <i className="devicon-typescript-plain colored" style={{ margin: "3px" }}></i>, text: "contato.ts" },
-	{ icon: <i className="devicon-python-plain colored" style={{ margin: "3px" }}></i>, text: "devStack.py" },
-	{ icon: <i className="devicon-ruby-plain colored" style={{ margin: "3px" }}></i>, text: "habilidades.rb" },
-	{ icon: <i className="devicon-javascript-plain colored" style={{ margin: "3px" }}></i>, text: "projetos.js" },
+type displayIconsTabType = {
+	icon: JSX.Element;
+	text: string;
+	component: JSX.Element;
+};
+
+const LEFT_COLUMN_ITEMS = [
+	<AiFillLinkedin size={32} className="leftColumnIconStyle" />,
+	<AiOutlineGithub size={32} className="leftColumnIconStyle" />,
+	<FaEnvelope size={24} className="leftColumnIconStyle" />,
 ];
 
-const INITIAL_OPEN_TABS: displayIconsType[] = [
-	{ icon: <i className="devicon-html5-plain colored"></i>, text: "bemVindo.html" },
-	{ icon: <i className="devicon-react-original colored"></i>, text: "sobre.tsx" },
-	{ icon: <i className="devicon-typescript-plain colored"></i>, text: "contato.ts" },
-	{ icon: <i className="devicon-python-plain colored"></i>, text: "devStack.py" },
-	{ icon: <i className="devicon-ruby-plain colored"></i>, text: "habilidades.rb" },
-	{ icon: <i className="devicon-javascript-plain colored"></i>, text: "projetos.js" },
+const FILES_COLUMN_ITEMS: displayIconsType[] = [
+	{
+		icon: <i className="devicon-react-original colored"></i>,
+		text: "sobre.tsx",
+	},
+	{
+		icon: <i className="devicon-typescript-plain colored"></i>,
+		text: "contato.ts",
+	},
+	{
+		icon: <i className="devicon-python-plain colored"></i>,
+		text: "devStack.py",
+	},
+	{
+		icon: <i className="devicon-ruby-plain colored"></i>,
+		text: "habilidades.rb",
+	},
+	{
+		icon: <i className="devicon-javascript-plain colored"></i>,
+		text: "projetos.js",
+	},
+];
+
+const INITIAL_OPEN_TABS: displayIconsTabType[] = [
+	{ icon: <i className="devicon-html5-plain colored"></i>, text: "bemVindo.html", component: <Welcome /> },
+	{ icon: <i className="devicon-react-original colored"></i>, text: "sobre.tsx", component: <About /> },
+	{ icon: <i className="devicon-typescript-plain colored"></i>, text: "contato.ts", component: <Contact /> },
+	{ icon: <i className="devicon-python-plain colored"></i>, text: "devStack.py", component: <DevStack /> },
+	{ icon: <i className="devicon-ruby-plain colored"></i>, text: "habilidades.rb", component: <Skills /> },
+	{ icon: <i className="devicon-javascript-plain colored"></i>, text: "projetos.js", component: <Projects /> },
 ];
 
 const App = () => {
-	const [currentTab, setCurrentTab] = useState<displayIconsType>(INITIAL_OPEN_TABS[0]);
-	const [openTabs, setOpenTabs] = useState<displayIconsType[]>(INITIAL_OPEN_TABS);
-
-	const handleTabOnChange = (_e: React.SyntheticEvent, newTab: displayIconsType) => {
-		setCurrentTab(newTab);
-	};
-
-	let selectedTab;
-	switch (currentTab.text) {
-		case "sobre.tsx":
-			selectedTab = <About />;
-			break;
-		case "contato.ts":
-			selectedTab = <Contact />;
-			break;
-		case "devStack.py":
-			selectedTab = <DevStack />;
-			break;
-		case "habilidades.rb":
-			selectedTab = <Skills />;
-			break;
-		case "projetos.js":
-			selectedTab = <Projects />;
-			break;
-		default:
-			selectedTab = <Welcome />;
-			break;
-	}
+	const [key, setKey] = useState("bemVindo.html");
+	const [openTabs, setOpenTabs] = useState<displayIconsTabType[]>(INITIAL_OPEN_TABS);
 
 	return (
 		<>
-			<ThemeProvider theme={theme}>
-				<Stack
-					direction="column"
-					sx={{
-						height: "97vh",
-						display: "flex",
-						flexDirection: "column",
-						bgcolor: "yellow",
-					}}
-				>
-					<Box
-						sx={{
-							bgcolor: "#1d232f",
-							height: "4vh",
-							// width: "99vw",
-							color: "white",
-							textAlign: "center",
-							justifyContent: "center",
-							pt: 0.5,
-							fontFamily: "Arial",
-							fontSize: 15,
-							display: "flex",
-						}}
-					>
-						{currentTab.text} - Amanda F. I. - Currículo
-					</Box>
+			<style type="text/css">
+				{`
+    .btn-filesBtn {
+        color: "white";
+        width: "100%";
+        text-align: "left";
+        justify-content: "left";
+        font-size: 17;
+        display: "flex";
+        background-color: #171c26;
+        border: none;
+    }
 
-					<Grid container sx={{ height: "100%", overflow: "auto" }}>
-						<Grid item xs={0.5} sx={{ bgcolor: "#141820", color: "white" }}>
+    .btn-bottomLeft {
+        color: "white";
+        text-align: "left";
+        justify-content: "left";
+        font-size: 17;
+        display: "flex";
+        background-color: "#457dff";
+        border: none;
+        
+        
+    }
+
+    .div-bottomLeft {
+        padding: 0;
+        
+        
+    }
+    `}
+			</style>
+			<div className="gridGeneric">
+				<Row className="row topRow">
+					<Col>1</Col>
+				</Row>
+				<Row className="row middleRow">
+					<Col className="col firstCol" xs={1}>
+						<Stack>
 							{LEFT_COLUMN_ITEMS.map((icon) => (
-								<Button color="secondary"> {icon} </Button>
+								<Button className="leftIconBtn"> {icon} </Button>
 							))}
-						</Grid>
-
-						<Grid item xs={2} sx={{ bgcolor: "#171c26", color: "white", display: "flex", flexDirection: "row" }}>
-							<List sx={{ display: "flex", flexDirection: "column" }}>
-								<Button
-									size="medium"
-									sx={{
-										color: "white",
-										width: "100%",
-										textAlign: "left",
-										justifyContent: "left",
-										fontSize: 17,
-										display: "flex",
-									}}
-								>
-									<VscChevronDown /> &nbsp; Curriculum
+						</Stack>
+					</Col>
+					<Col className="col secondCol" xs={2}>
+						<Button variant="filesBtn" className="btn-primary">
+							<VscChevronDown /> &nbsp; Curriculum
+						</Button>
+						<Stack>
+							{FILES_COLUMN_ITEMS.map((item, index) => (
+								<Button variant="filesBtn" className="btn-primary">
+									{item.icon}
+									&nbsp;
+									{item.text}
 								</Button>
-
-								{FILES_COLUMN_ITEMS.map((item, index) => (
-									<Button sx={filesColumnStye} onClick={() => setCurrentTab(openTabs[index])}>
-										{item.icon}
-										&nbsp;
-										{item.text}
-									</Button>
-								))}
-							</List>
-						</Grid>
-						<Grid item xs={9.5} sx={{ bgcolor: "#171c26", color: "white" }}>
-							<Tabs
-								value={currentTab}
-								onChange={handleTabOnChange}
-								textColor="inherit"
-								aria-label="secondary tabs example"
-							>
-								{openTabs.map((item) => (
-									<Tab
-										value={item}
-										label={
-											<Stack direction="row">
-												{item.icon}
-												&nbsp;
-												{item.text}
-											</Stack>
-										}
-									/>
-								))}
-							</Tabs>
-							{selectedTab}
-						</Grid>
-					</Grid>
-
-					<Stack
-						direction="row"
-						sx={{
-							bgcolor: "#171c26",
-							height: "4vh",
-							width: "99vw",
-							color: "white",
-							fontFamily: "Arial",
-							fontSize: 15,
-							justifyContent: "space-evenly",
-						}}
-					>
-						<Stack
-							direction="row"
-							sx={{
-								bgcolor: "#171c26",
-								width: "100%",
-								color: "white",
-								fontFamily: "Arial",
-								fontSize: 15,
-							}}
-						>
-							<Stack
-								direction="row"
-								sx={{
-									bgcolor: "#171c26",
-									width: "50vw",
-									color: "white",
-									fontFamily: "Arial",
-									fontSize: 15,
-								}}
-							>
-								<Button
-									sx={{
-										bgcolor: "#457dff",
-										color: "white",
-									}}
+							))}
+						</Stack>
+					</Col>
+					<Col className="col thirdCol">
+						<Tabs id="controlled-tab-example" activeKey={key} onSelect={(k) => setKey(k)} className="mb-3">
+							{openTabs.map((item) => (
+								<Tab
+									eventKey={item.text}
+									title={
+										<>
+											{item.icon} &nbsp;{item.text}
+										</>
+									}
 								>
-									<VscRemote />
-									&nbsp; WSL: Ubuntu
-								</Button>
-								<Button
-									sx={{
-										bgcolor: "#171c26",
-										color: "white",
-									}}
-								>
-									<VscSourceControl />
-									&nbsp; main
-								</Button>
-							</Stack>
-							<Stack
-								direction="row"
-								sx={{
-									bgcolor: "#171c26",
-									height: "4vh",
-									width: "50vw",
-									color: "white",
-									fontFamily: "Arial",
-									fontSize: 15,
-									justifyContent: "end",
-									pr: 3,
-									// pt: 1,
-								}}
-							>
+									{item.component}
+								</Tab>
+							))}
+						</Tabs>
+					</Col>
+				</Row>
+				<Row className="row bottonRow">
+					<Stack direction="horizontal" className="bottonStack">
+						<div>
+							<span className="wslButton">
+								<VscRemote />
+								&nbsp; WSL: Ubuntu
+							</span>
+							&nbsp;&nbsp;&nbsp;
+							<span className="bottomLeft">
+								<VscSourceControl />
+								&nbsp; main
+							</span>
+						</div>
+						<div className="p-2 ms-auto"></div>
+						<div className="p-2">
+							<Stack direction="horizontal">
 								<i className="devicon-react-original"></i> &nbsp;Feito com React &nbsp; &nbsp;
 								<VscCheckAll /> &nbsp;Prettier
 							</Stack>
-						</Stack>
+						</div>
 					</Stack>
-				</Stack>
-			</ThemeProvider>
+				</Row>
+			</div>
 		</>
 	);
 };

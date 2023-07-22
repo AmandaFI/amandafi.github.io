@@ -1,0 +1,85 @@
+.filesColumnStye {
+	color: "white";
+	width: "100%";
+	text-align: "left";
+	justify-content: "left";
+	font-size: 17;
+}
+
+.filesButton {
+	color: "white";
+	width: "100%";
+	text-align: "left";
+	justify-content: "left";
+	font-size: 17;
+	display: "flex";
+	background-color: #171c26;
+	border: none;
+}
+
+.btn-primary {
+	color: "white";
+	width: "100%";
+	text-align: "left";
+	justify-content: "left";
+	font-size: 17;
+	display: "flex";
+	background-color: green;
+	border: none;
+}
+
+.leftColumnIconStyle {
+	fill: "#a8b5d1";
+	margin: "6px 13px 6px 8px";
+}
+
+.leftIconBtn {
+	background-color: #141820;
+	border: none;
+}
+
+.gridGeneric {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.topRow {
+	background-color: #1d232f;
+	height: 100%;
+	color: white;
+}
+
+.middleRow {
+	background-color: green;
+	height: 89vh;
+	color: white;
+}
+
+.bottonRow {
+	background-color: #1d232f;
+	height: 100%;
+	color: white;
+}
+
+.firstCol {
+	background-color: #141820;
+}
+
+.secondCol {
+	background-color: #171c26;
+}
+
+.thirdCol {
+	background-color: #171c26;
+}
+
+.wslButton {
+	background-color: #457dff;
+}
+
+.bottonStack {
+	padding: 0;
+	margin: 0;
+}
