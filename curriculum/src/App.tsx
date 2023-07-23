@@ -2,7 +2,7 @@ import * as React from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { VscChevronDown, VscGithubAlt, VscRemote, VscSourceControl, VscCheckAll } from "react-icons/vsc";
+import { VscChevronDown, VscGithubAlt, VscRemote, VscSourceControl, VscCheckAll, VscChevronUp } from "react-icons/vsc";
 import { AiFillLinkedin, AiOutlineGithub } from "react-icons/ai";
 import { FaEnvelope } from "react-icons/fa";
 import Button from "react-bootstrap/Button";
@@ -19,7 +19,7 @@ import Stack from "react-bootstrap/Stack";
 
 import "./App.css";
 
-type Tabs = "bemVindo.html" | "sobre.tsx" | "contato.ts" | "devStack.py" | "habilidades.rb" | "projetos.js";
+type Tabs = "bemVindo.rb" | "sobre.tsx" | "contato.ts" | "habilidades.ipynb" | "projetos.js";
 
 type displayIconsType = {
 	icon: JSX.Element;
@@ -40,6 +40,10 @@ const LEFT_COLUMN_ITEMS = [
 
 const FILES_COLUMN_ITEMS: displayIconsType[] = [
 	{
+		icon: <i className="devicon-ruby-plain colored"></i>,
+		text: "bemVindo.rb",
+	},
+	{
 		icon: <i className="devicon-react-original colored"></i>,
 		text: "sobre.tsx",
 	},
@@ -47,13 +51,13 @@ const FILES_COLUMN_ITEMS: displayIconsType[] = [
 		icon: <i className="devicon-typescript-plain colored"></i>,
 		text: "contato.ts",
 	},
+	// {
+	// 	icon: <i className="devicon-python-plain colored"></i>,
+	// 	text: "devStack.py",
+	// },
 	{
-		icon: <i className="devicon-python-plain colored"></i>,
-		text: "devStack.py",
-	},
-	{
-		icon: <i className="devicon-ruby-plain colored"></i>,
-		text: "habilidades.rb",
+		icon: <i className="devicon-jupyter-plain colored"></i>,
+		text: "habilidades.ipynb",
 	},
 	{
 		icon: <i className="devicon-javascript-plain colored"></i>,
@@ -61,17 +65,23 @@ const FILES_COLUMN_ITEMS: displayIconsType[] = [
 	},
 ];
 
-const INITIAL_OPEN_TABS: displayIconsTabType[] = [
-	{ icon: <i className="devicon-html5-plain colored"></i>, text: "bemVindo.html", component: <Welcome /> },
-	{ icon: <i className="devicon-react-original colored"></i>, text: "sobre.tsx", component: <About /> },
-	{ icon: <i className="devicon-typescript-plain colored"></i>, text: "contato.ts", component: <Contact /> },
-	{ icon: <i className="devicon-python-plain colored"></i>, text: "devStack.py", component: <DevStack /> },
-	{ icon: <i className="devicon-ruby-plain colored"></i>, text: "habilidades.rb", component: <Skills /> },
-	{ icon: <i className="devicon-javascript-plain colored"></i>, text: "projetos.js", component: <Projects /> },
-];
-
 const App = () => {
-	const [key, setKey] = useState("bemVindo.html");
+	const [key, setKey] = useState("bemVindo.rb");
+	const [showFiles, setShowFiles] = useState(true);
+
+	const INITIAL_OPEN_TABS: displayIconsTabType[] = [
+		{
+			icon: <i className="devicon-ruby-plain colored"></i>,
+			text: "bemVindo.rb",
+			component: <Welcome setCurrentTab={setKey} />,
+		},
+		{ icon: <i className="devicon-react-original colored"></i>, text: "sobre.tsx", component: <About /> },
+		{ icon: <i className="devicon-typescript-plain colored"></i>, text: "contato.ts", component: <Contact /> },
+		// { icon: <i className="devicon-python-plain colored"></i>, text: "devStack.py", component: <DevStack /> },
+		{ icon: <i className="devicon-jupyter-plain colored"></i>, text: "habilidades.ipynb", component: <Skills /> },
+		{ icon: <i className="devicon-javascript-plain colored"></i>, text: "projetos.js", component: <Projects /> },
+	];
+
 	const [openTabs, setOpenTabs] = useState<displayIconsTabType[]>(INITIAL_OPEN_TABS);
 
 	return (
@@ -126,7 +136,7 @@ const App = () => {
 		border-right: none !important;
 		
 		--bs-nav-tabs-link-hover-border-color: transparent !important;
-		--bs-nav-tabs-border-color: transparent !important;
+		--bs-nav-tabs-border-color:  transparent !important;
 	  }
 	  
 	  .nav-tabs .nav-link.active {
@@ -153,11 +163,16 @@ const App = () => {
 						</Stack>
 					</Col>
 					<Col className="col secondCol" xs={2}>
-						<Button variant="filesBtn" className="btn-primary">
-							<VscChevronDown /> &nbsp; Curriculum
+						<Button
+							variant="filesBtn"
+							className="btn-primary"
+							onClick={(previousState) => setShowFiles(!previousState)}
+						>
+							{showFiles ? <VscChevronDown /> : <VscChevronUp />}
+							&nbsp; Curriculum
 						</Button>
 						<Stack>
-							{FILES_COLUMN_ITEMS.map((item, index) => (
+							{FILES_COLUMN_ITEMS.map((item) => (
 								<Button variant="filesBtn" className="btn-primary">
 									{item.icon}
 									&nbsp;
@@ -199,8 +214,9 @@ const App = () => {
 						<div className="p-2 ms-auto"></div>
 						<div className="p-2">
 							<Stack direction="horizontal">
-								<i className="devicon-react-original"></i> &nbsp;Feito com React &nbsp; &nbsp;
-								<VscCheckAll /> &nbsp;Prettier
+								Feito com: &nbsp;
+								<i className="devicon-react-original colored"></i> &nbsp;React&nbsp;&nbsp;
+								<i className="devicon-bootstrap-plain colored"></i> &nbsp;Bootstrap
 							</Stack>
 						</div>
 					</Stack>

@@ -7,9 +7,14 @@ import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Arrow from "@elsdoerfer/react-arrow";
 import Xarrow, { useXarrow, Xwrapper } from "react-xarrows";
+import { useEffect } from "react";
+
+// https://eliav2.github.io/react-xarrows/#customsvgs
 
 const About = () => {
 	const updateXarrow = useXarrow();
+
+	useEffect(() => updateXarrow());
 	return (
 		<>
 			<style type="text/css">
@@ -23,7 +28,7 @@ const About = () => {
 			<div
 				style={{
 					backgroundColor: "#1d232f",
-					height: "82vh",
+					height: "84vh",
 					overflow: "auto",
 					padding: 15,
 					paddingLeft: 30,

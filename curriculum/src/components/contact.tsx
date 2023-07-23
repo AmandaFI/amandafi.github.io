@@ -46,14 +46,15 @@ switch (contactar) {
 	`;
 
 	return (
-		<Box
-			sx={{
-				bgcolor: "#282a36",
-				fontSize: 18,
+		<div
+			style={{
+				backgroundColor: "#282a36",
+				fontSize: 20,
 				fontFamily: "Fira Code, monospace;",
 				lineHeight: 0.5,
 				display: "flex",
 				flexDirection: "column",
+				height: "84vh",
 			}}
 		>
 			{/* <CodeSection showLineNumbers={true} theme={"dark"} lang={"typescript"}>
@@ -70,7 +71,7 @@ switch (contactar) {
 				copied={false}
 				onCopy={() => {}}
 			/>
-		</Box>
+		</div>
 	);
 };
 
