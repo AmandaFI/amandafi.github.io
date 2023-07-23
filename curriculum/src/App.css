@@ -33,11 +33,6 @@
 	margin: "6px 13px 6px 8px";
 }
 
-.leftIconBtn {
-	background-color: #141820;
-	border: none;
-}
-
 .gridGeneric {
 	height: 100%;
 	width: 100%;
@@ -58,7 +53,7 @@
 }
 
 .bottonRow {
-	background-color: #1d232f;
+	background-color: #171c26;
 	height: 100%;
 	color: white;
 }

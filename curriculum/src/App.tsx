@@ -101,11 +101,40 @@ const App = () => {
         
     }
 
+	.btn-leftIconBtn {
+		background-color: #141820;
+		border: none;
+	}
+
     .div-bottomLeft {
         padding: 0;
         
         
     }
+
+	.nav {
+		border-bottom:0px !important;
+		
+		margin: 0 !important;
+	}
+
+	.nav-tabs .nav-link {
+		background-color: transparent !important;
+		color: #FFFFFF !important;
+		border-top: none !important;
+		border-left: none !important;
+		border-right: none !important;
+		
+		--bs-nav-tabs-link-hover-border-color: transparent !important;
+		--bs-nav-tabs-border-color: transparent !important;
+	  }
+	  
+	  .nav-tabs .nav-link.active {
+		background-color: #1d232f !important;
+		
+		border-bottom:0px !important;
+	  }
+	  
     `}
 			</style>
 			<div className="gridGeneric">
@@ -116,7 +145,10 @@ const App = () => {
 					<Col className="col firstCol" xs={1}>
 						<Stack>
 							{LEFT_COLUMN_ITEMS.map((icon) => (
-								<Button className="leftIconBtn"> {icon} </Button>
+								<Button variant="leftIconBtn" className="btn-primary">
+									{" "}
+									{icon}{" "}
+								</Button>
 							))}
 						</Stack>
 					</Col>
