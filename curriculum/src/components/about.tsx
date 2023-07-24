@@ -7,14 +7,41 @@ import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Arrow from "@elsdoerfer/react-arrow";
 import Xarrow, { useXarrow, Xwrapper } from "react-xarrows";
-import { useEffect } from "react";
+import { RefObject, useEffect, useRef, useState } from "react";
 
 // https://eliav2.github.io/react-xarrows/#customsvgs
+// https://dev.to/jmalvarez/check-if-an-element-is-visible-with-react-hooks-27h8
+
+// Deixar tabelas Draggable ?
+
+export function useIsVisible(ref: RefObject<HTMLDivElement>) {
+	const [isIntersecting, setIntersecting] = useState(false);
+
+	useEffect(() => {
+		const observer = new IntersectionObserver(([entry]) => setIntersecting(entry.isIntersecting));
+
+		observer.observe(ref.current!);
+		return () => {
+			observer.disconnect();
+		};
+	}, [ref]);
+
+	return isIntersecting;
+}
 
 const About = () => {
 	const updateXarrow = useXarrow();
 
-	useEffect(() => updateXarrow());
+	const expRef = useRef<HTMLDivElement>(null);
+	const amandaRef = useRef<HTMLDivElement>(null);
+
+	const mainDivRef = useRef<HTMLDivElement>(null);
+	const isVisible = useIsVisible(mainDivRef);
+
+	useEffect(() => {
+		updateXarrow();
+	}, [isVisible]);
+
 	return (
 		<>
 			<style type="text/css">
@@ -25,21 +52,23 @@ const About = () => {
     }
     `}
 			</style>
-			<div
-				style={{
-					backgroundColor: "#1d232f",
-					height: "84vh",
-					overflow: "auto",
-					padding: 15,
-					paddingLeft: 30,
-					paddingRight: 30,
-				}}
-				onScroll={updateXarrow}
-			>
-				<Xwrapper>
+			<Xwrapper>
+				<div
+					style={{
+						backgroundColor: "#1d232f",
+						height: "84vh",
+						overflow: "auto",
+						padding: 15,
+						paddingLeft: 30,
+						paddingRight: 30,
+					}}
+					onScroll={updateXarrow}
+					onMouseMove={updateXarrow}
+					ref={mainDivRef}
+				>
 					<Row>
 						<Col className="basicCol">
-							<Card id="exp_box" style={{ width: "19rem", borderBlockColor: "#a8b5d1" }}>
+							<Card id="exp_box" style={{ width: "19rem", borderBlockColor: "#a8b5d1" }} ref={expRef}>
 								<Card.Body style={{ backgroundColor: "#a8b5d1", textAlign: "center", padding: 3 }}>
 									<Card.Title>Experiência</Card.Title>
 								</Card.Body>
@@ -56,7 +85,7 @@ const About = () => {
 						</Col>
 						<Col className="basicCol">
 							<div style={{ height: "2rem" }}>
-								<Xarrow start="amanda_box" end="exp_box" color="#a8b5d1" strokeWidth={3} curveness={1} />
+								<Xarrow start={amandaRef} end={expRef} color="#a8b5d1" strokeWidth={3} curveness={1} />
 							</div>
 						</Col>
 						<Col>
@@ -80,7 +109,7 @@ const About = () => {
 									<Xarrow start="amanda_box" end="lang_box" color="#a8b5d1" strokeWidth={3} curveness={1} />
 								</div>
 								<div>
-									<Card id="amanda_box" style={{ width: "17rem", borderBlockColor: "#a8b5d1" }}>
+									<Card id="amanda_box" style={{ width: "17rem", borderBlockColor: "#a8b5d1" }} ref={amandaRef}>
 										<Card.Body style={{ backgroundColor: "#a8b5d1", textAlign: "center", padding: 3 }}>
 											<Card.Title>Amanda</Card.Title>
 										</Card.Body>
@@ -147,8 +176,8 @@ const About = () => {
 							</Card>
 						</Col>
 					</Row>
-				</Xwrapper>
-			</div>
+				</div>
+			</Xwrapper>
 		</>
 	);
 };

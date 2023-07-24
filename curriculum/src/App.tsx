@@ -18,6 +18,7 @@ import Projects from "./components/projects";
 import Stack from "react-bootstrap/Stack";
 
 import "./App.css";
+import { Xwrapper, useXarrow } from "react-xarrows";
 
 type Tabs = "bemVindo.rb" | "sobre.tsx" | "contato.ts" | "habilidades.ipynb" | "projetos.js";
 
@@ -89,12 +90,8 @@ const App = () => {
 			<style type="text/css">
 				{`
     .btn-filesBtn {
-        color: "white";
-        width: "100%";
-        text-align: "left";
-        justify-content: "left";
-        font-size: 17;
-        display: "flex";
+       
+		
         background-color: #171c26;
         border: none;
     }
@@ -143,6 +140,22 @@ const App = () => {
 		background-color: #1d232f !important;
 		
 		border-bottom:0px !important;
+	  }
+
+	  .row>* {
+		paddding-right: 0 !important;
+		paddding-left: 0 !important;
+		margin-top: 0 !important;
+
+	  }
+
+	  .btn-primary {
+		--bs-btn-hover-bg: #1d232f;
+    	--bs-btn-hover-border-color: #0a58ca;
+	  }
+
+	  .btn {
+		text-align: center; !important;
 	  }
 	  
     `}
