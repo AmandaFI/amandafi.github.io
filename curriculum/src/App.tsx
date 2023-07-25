@@ -90,10 +90,9 @@ const App = () => {
 			<style type="text/css">
 				{`
     .btn-filesBtn {
-       
-		
         background-color: #171c26;
         border: none;
+		text-align: left !important;
     }
 
     .btn-bottomLeft {
@@ -182,11 +181,11 @@ const App = () => {
 							onClick={(previousState) => setShowFiles(!previousState)}
 						>
 							{showFiles ? <VscChevronDown /> : <VscChevronUp />}
-							&nbsp; Curriculum
+							&nbsp; <strong>Curriculum</strong>
 						</Button>
 						<Stack>
 							{FILES_COLUMN_ITEMS.map((item) => (
-								<Button variant="filesBtn" className="btn-primary">
+								<Button variant="filesBtn" className="btn-primary text-left">
 									{item.icon}
 									&nbsp;
 									{item.text}

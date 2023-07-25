@@ -11,14 +11,16 @@ import { RefObject, useEffect, useRef, useState } from "react";
 
 // https://eliav2.github.io/react-xarrows/#customsvgs
 // https://dev.to/jmalvarez/check-if-an-element-is-visible-with-react-hooks-27h8
+// https://blog.webdevsimplified.com/2022-01/intersection-observer/
+// https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
 
-// Deixar tabelas Draggable ?
+// Tornar tabelas Draggable ?
 
 export function useIsVisible(ref: RefObject<HTMLDivElement>) {
 	const [isIntersecting, setIntersecting] = useState(false);
 
 	useEffect(() => {
-		const observer = new IntersectionObserver(([entry]) => setIntersecting(entry.isIntersecting));
+		const observer = new IntersectionObserver(([entry]) => setIntersecting(entry.isIntersecting), { threshold: 0.5 });
 
 		observer.observe(ref.current!);
 		return () => {
@@ -31,16 +33,27 @@ export function useIsVisible(ref: RefObject<HTMLDivElement>) {
 
 const About = () => {
 	const updateXarrow = useXarrow();
+	const mainDivRef = useRef<HTMLDivElement>(null);
+	const aboutTabVisible = useIsVisible(mainDivRef);
 
 	const expRef = useRef<HTMLDivElement>(null);
-	const amandaRef = useRef<HTMLDivElement>(null);
+	const expVisible = useIsVisible(expRef);
 
-	const mainDivRef = useRef<HTMLDivElement>(null);
-	const isVisible = useIsVisible(mainDivRef);
+	const amandaRef = useRef<HTMLDivElement>(null);
+	const amandaVisible = useIsVisible(amandaRef);
+
+	const langRef = useRef<HTMLDivElement>(null);
+	const langVisible = useIsVisible(langRef);
+
+	const postRef = useRef<HTMLDivElement>(null);
+	const postRefVisible = useIsVisible(postRef);
+
+	const eduRef = useRef<HTMLDivElement>(null);
+	const eduRefVisible = useIsVisible(eduRef);
 
 	useEffect(() => {
 		updateXarrow();
-	}, [isVisible]);
+	}, [aboutTabVisible]);
 
 	return (
 		<>
@@ -85,13 +98,17 @@ const About = () => {
 						</Col>
 						<Col className="basicCol">
 							<div style={{ height: "2rem" }}>
-								<Xarrow start={amandaRef} end={expRef} color="#a8b5d1" strokeWidth={3} curveness={1} />
+								{amandaVisible && expVisible ? (
+									<Xarrow start={amandaRef} end={expRef} color="#a8b5d1" strokeWidth={3} curveness={1} />
+								) : (
+									<></>
+								)}
 							</div>
 						</Col>
 						<Col>
 							<Stack>
 								<div>
-									<Card id="lang_box" style={{ width: "17rem", borderBlockColor: "#a8b5d1" }}>
+									<Card id="lang_box" style={{ width: "17rem", borderBlockColor: "#a8b5d1" }} ref={langRef}>
 										<Card.Body style={{ backgroundColor: "#a8b5d1", textAlign: "center", padding: 3 }}>
 											<Card.Title>Idiomas</Card.Title>
 										</Card.Body>
@@ -106,7 +123,11 @@ const About = () => {
 									</Card>
 								</div>
 								<div style={{ height: "2rem" }}>
-									<Xarrow start="amanda_box" end="lang_box" color="#a8b5d1" strokeWidth={3} curveness={1} />
+									{amandaVisible && langVisible ? (
+										<Xarrow start="amanda_box" end="lang_box" color="#a8b5d1" strokeWidth={3} curveness={1} />
+									) : (
+										<></>
+									)}
 								</div>
 								<div>
 									<Card id="amanda_box" style={{ width: "17rem", borderBlockColor: "#a8b5d1" }} ref={amandaRef}>
@@ -124,10 +145,14 @@ const About = () => {
 									</Card>
 								</div>
 								<div style={{ height: "2rem" }}>
-									<Xarrow start="amanda_box" end="post_box" color="#a8b5d1" strokeWidth={3} curveness={1} />
+									{amandaVisible && postRefVisible ? (
+										<Xarrow start="amanda_box" end="post_box" color="#a8b5d1" strokeWidth={3} curveness={1} />
+									) : (
+										<></>
+									)}
 								</div>
 								<div>
-									<Card id="post_box" style={{ width: "17rem", borderBlockColor: "#a8b5d1" }}>
+									<Card id="post_box" style={{ width: "17rem", borderBlockColor: "#a8b5d1" }} ref={postRef}>
 										<Card.Body style={{ backgroundColor: "#a8b5d1", textAlign: "center", padding: 3 }}>
 											<Card.Title>Publicações</Card.Title>
 										</Card.Body>
@@ -145,11 +170,15 @@ const About = () => {
 						</Col>
 						<Col className="basicCol">
 							<div style={{ height: "2rem" }}>
-								<Xarrow start="amanda_box" end="edu_box" color="#a8b5d1" strokeWidth={3} curveness={1} />
+								{amandaVisible && eduRefVisible ? (
+									<Xarrow start="amanda_box" end="edu_box" color="#a8b5d1" strokeWidth={3} curveness={1} />
+								) : (
+									<></>
+								)}
 							</div>
 						</Col>
 						<Col className="basicCol">
-							<Card id="edu_box" style={{ width: "19rem", borderBlockColor: "#a8b5d1" }}>
+							<Card id="edu_box" style={{ width: "19rem", borderBlockColor: "#a8b5d1" }} ref={eduRef}>
 								<Card.Body style={{ backgroundColor: "#a8b5d1", textAlign: "center", padding: 3 }}>
 									<Card.Title>Formação</Card.Title>
 								</Card.Body>
