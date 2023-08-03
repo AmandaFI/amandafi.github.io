@@ -164,7 +164,7 @@ const App = () => {
 					<Col>1</Col>
 				</Row>
 				<Row className="row middleRow">
-					<Col className="col firstCol" xs={1}>
+					<Col className="col firstCol col-md-auto">
 						<Stack>
 							{LEFT_COLUMN_ITEMS.map((icon) => (
 								<Button variant="leftIconBtn" className="btn-primary">

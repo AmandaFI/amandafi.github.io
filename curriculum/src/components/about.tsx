@@ -98,10 +98,8 @@ const About = () => {
 						</Col>
 						<Col className="basicCol">
 							<div style={{ height: "2rem" }}>
-								{amandaVisible && expVisible ? (
+								{amandaVisible && expVisible && (
 									<Xarrow start={amandaRef} end={expRef} color="#a8b5d1" strokeWidth={3} curveness={1} />
-								) : (
-									<></>
 								)}
 							</div>
 						</Col>
@@ -123,10 +121,8 @@ const About = () => {
 									</Card>
 								</div>
 								<div style={{ height: "2rem" }}>
-									{amandaVisible && langVisible ? (
+									{amandaVisible && langVisible && (
 										<Xarrow start="amanda_box" end="lang_box" color="#a8b5d1" strokeWidth={3} curveness={1} />
-									) : (
-										<></>
 									)}
 								</div>
 								<div>
@@ -145,10 +141,8 @@ const About = () => {
 									</Card>
 								</div>
 								<div style={{ height: "2rem" }}>
-									{amandaVisible && postRefVisible ? (
+									{amandaVisible && postRefVisible && (
 										<Xarrow start="amanda_box" end="post_box" color="#a8b5d1" strokeWidth={3} curveness={1} />
-									) : (
-										<></>
 									)}
 								</div>
 								<div>
@@ -170,10 +164,8 @@ const About = () => {
 						</Col>
 						<Col className="basicCol">
 							<div style={{ height: "2rem" }}>
-								{amandaVisible && eduRefVisible ? (
+								{amandaVisible && eduRefVisible && (
 									<Xarrow start="amanda_box" end="edu_box" color="#a8b5d1" strokeWidth={3} curveness={1} />
-								) : (
-									<></>
 								)}
 							</div>
 						</Col>

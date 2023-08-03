@@ -40,8 +40,7 @@ switch (contactar) {
 		console.log("https://github.com/AmandaFI");
 		break;
 	default: 
-		console.log("")
-		break;
+		const _exhaustiveCheck: never = contactar;
 }
 	`;
 
