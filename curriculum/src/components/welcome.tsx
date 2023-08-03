@@ -1,4 +1,4 @@
-import { Box, Button, Stack, ThemeProvider, Typography, createTheme } from "@mui/material";
+import { Button, Stack, ThemeProvider, Typography, createTheme } from "@mui/material";
 
 const theme = createTheme({
 	typography: {
@@ -9,7 +9,8 @@ const theme = createTheme({
 });
 
 type welcomePropsType = {
-	setCurrentTab: React.Dispatch<React.SetStateAction<string>>;
+	// tabs: number[];
+	setCurrentTab: React.Dispatch<React.SetStateAction<string | null>>;
 };
 
 const Welcome = (props: welcomePropsType) => {

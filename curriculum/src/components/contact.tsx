@@ -1,6 +1,7 @@
-import { Box } from "@mui/system";
-import { CopyBlock, dracula, hybrid, anOldHope, CodeBlock, ocean, zenburn } from "react-code-blocks";
-import { CodeSection } from "react-code-section-lib";
+import { CopyBlock, dracula } from "react-code-blocks";
+// import { CodeSection } from "react-code-section-lib";
+
+// themes: hybrid, anOldHope, CodeBlock, ocean, zenburn
 
 // type Contato = "E-mail" | "Telefone" | "Linkedin" | "GitHub"
 

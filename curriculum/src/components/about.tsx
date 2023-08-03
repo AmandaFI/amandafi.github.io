@@ -1,11 +1,8 @@
-import { Box } from "@mui/material";
-import pic from "../assets/about.jpg";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Stack from "react-bootstrap/Stack";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
-import Arrow from "@elsdoerfer/react-arrow";
 import Xarrow, { useXarrow, Xwrapper } from "react-xarrows";
 import { RefObject, useEffect, useRef, useState } from "react";
 

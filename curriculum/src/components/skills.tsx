@@ -1,6 +1,3 @@
-import * as React from "react";
-import { useState } from "react";
-import { Stack } from "react-bootstrap";
 import { VscAdd } from "react-icons/vsc";
 
 const porjectsSec1 = [
@@ -57,7 +54,7 @@ const sec3Text = ["Programação Funcional:", "Injeção e Inversão de Dependê
 const porjectsSec3 = [
 	<ul>
 		<li>Closures</li>
-		<li>High Order Functions (HOF)</li>
+		<li>Higher Order Functions (HOF)</li>
 		<li>Imutabilidade</li>
 		<li>Funções Puras</li>
 		<li>Programação Declarativa</li>
@@ -93,12 +90,12 @@ const TEXT = [
 	},
 	{ id: 2, sectionTitle: "IA - Machine Learning e Deep Learning", sectionText: sec2Text, sectionProjects: [<></>] },
 	{ id: 3, sectionTitle: "Paradigmas e Conceitos", sectionText: sec3Text, sectionProjects: porjectsSec3 },
-	{ id: 4, sectionTitle: "Visão Computacional", sectionText: sec3Text, sectionProjects: [<></>] },
+	{ id: 4, sectionTitle: "Visão Computacional", sectionText: sec4Text, sectionProjects: [<></>] },
 	{ id: 5, sectionTitle: "Tecnologias", sectionText: sec5Text, sectionProjects: [<></>] },
 ];
 
 const Skills = () => {
-	const [clickedCell, setClickedCell] = useState<number | null>(null);
+	//const [clickedCell, setClickedCell] = useState<number | null>(null);
 
 	return (
 		<>

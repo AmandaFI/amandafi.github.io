@@ -1,89 +1,86 @@
-import * as React from "react";
-import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { VscChevronDown, VscGithubAlt, VscRemote, VscSourceControl, VscCheckAll, VscChevronUp } from "react-icons/vsc";
+import { VscChevronDown, VscRemote, VscSourceControl, VscChevronUp, VscClose } from "react-icons/vsc";
 import { AiFillLinkedin, AiOutlineGithub } from "react-icons/ai";
 import { FaEnvelope } from "react-icons/fa";
 import Button from "react-bootstrap/Button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import Contact from "./components/contact";
 import Welcome from "./components/welcome";
 import About from "./components/about";
-import DevStack from "./components/stack";
 import Skills from "./components/skills";
 import Projects from "./components/projects";
 import Stack from "react-bootstrap/Stack";
-
 import "./App.css";
-import { Xwrapper, useXarrow } from "react-xarrows";
+
+// npm run deploy
 
 type Tabs = "bemVindo.rb" | "sobre.tsx" | "contato.ts" | "habilidades.ipynb" | "projetos.js";
 
-type displayIconsType = {
-	icon: JSX.Element;
-	text: string;
-};
-
-type displayIconsTabType = {
+export type displayIconsTabType = {
 	icon: JSX.Element;
 	text: string;
 	component: JSX.Element;
+	tabId: number;
 };
 
 const LEFT_COLUMN_ITEMS = [
-	<AiFillLinkedin size={32} className="leftColumnIconStyle" />,
-	<AiOutlineGithub size={32} className="leftColumnIconStyle" />,
-	<FaEnvelope size={24} className="leftColumnIconStyle" />,
-];
-
-const FILES_COLUMN_ITEMS: displayIconsType[] = [
-	{
-		icon: <i className="devicon-ruby-plain colored"></i>,
-		text: "bemVindo.rb",
-	},
-	{
-		icon: <i className="devicon-react-original colored"></i>,
-		text: "sobre.tsx",
-	},
-	{
-		icon: <i className="devicon-typescript-plain colored"></i>,
-		text: "contato.ts",
-	},
-	// {
-	// 	icon: <i className="devicon-python-plain colored"></i>,
-	// 	text: "devStack.py",
-	// },
-	{
-		icon: <i className="devicon-jupyter-plain colored"></i>,
-		text: "habilidades.ipynb",
-	},
-	{
-		icon: <i className="devicon-javascript-plain colored"></i>,
-		text: "projetos.js",
-	},
+	{ icon: <AiFillLinkedin size={32} className="leftColumnIconStyle" />, url: "https://www.linkedin.com/in/amandafi/" },
+	{ icon: <AiOutlineGithub size={32} className="leftColumnIconStyle" />, url: "https://github.com/AmandaFI" },
+	{ icon: <FaEnvelope size={28} className="leftColumnIconStyle" />, url: "" },
 ];
 
 const App = () => {
-	const [key, setKey] = useState("bemVindo.rb");
-	const [showFiles, setShowFiles] = useState(true);
+	const [key, setKey] = useState<string | null>("bemVindo.rb");
 
-	const INITIAL_OPEN_TABS: displayIconsTabType[] = [
+	const TABS: displayIconsTabType[] = [
 		{
 			icon: <i className="devicon-ruby-plain colored"></i>,
 			text: "bemVindo.rb",
 			component: <Welcome setCurrentTab={setKey} />,
+			tabId: 0,
 		},
-		{ icon: <i className="devicon-react-original colored"></i>, text: "sobre.tsx", component: <About /> },
-		{ icon: <i className="devicon-typescript-plain colored"></i>, text: "contato.ts", component: <Contact /> },
-		// { icon: <i className="devicon-python-plain colored"></i>, text: "devStack.py", component: <DevStack /> },
-		{ icon: <i className="devicon-jupyter-plain colored"></i>, text: "habilidades.ipynb", component: <Skills /> },
-		{ icon: <i className="devicon-javascript-plain colored"></i>, text: "projetos.js", component: <Projects /> },
+		{ icon: <i className="devicon-react-original colored"></i>, text: "sobre.tsx", component: <About />, tabId: 1 },
+		{
+			icon: <i className="devicon-typescript-plain colored"></i>,
+			text: "contato.ts",
+			component: <Contact />,
+			tabId: 2,
+		},
+		{
+			icon: <i className="devicon-jupyter-plain colored"></i>,
+			text: "habilidades.ipynb",
+			component: <Skills />,
+			tabId: 3,
+		},
+		{
+			icon: <i className="devicon-javascript-plain colored"></i>,
+			text: "projetos.js",
+			component: <Projects />,
+			tabId: 4,
+		},
 	];
 
-	const [openTabs, setOpenTabs] = useState<displayIconsTabType[]>(INITIAL_OPEN_TABS);
+	const [displayedFiles, setDisplayedFiles] = useState<displayIconsTabType[]>(TABS);
+	const [openTabIds, setOpenTabIds] = useState<number[]>([...Array(TABS.length).keys()]);
+
+	const removeTab = (closedTabId: number) => () => {
+		setOpenTabIds((previousTabs) => previousTabs.filter((tabId) => tabId !== closedTabId));
+	};
+
+	// CORRIGIR
+	useEffect(() => {
+		setKey(TABS.length > 0 ? TABS[openTabIds[0]].text : null);
+	}, openTabIds);
+
+	const openFile = (selectedFileId: number) => () => {
+		if (!openTabIds.includes(selectedFileId)) {
+			setOpenTabIds((previousTabs) => [...previousTabs, selectedFileId]);
+		}
+		setKey(TABS[selectedFileId].text);
+	};
 
 	return (
 		<>
@@ -166,11 +163,13 @@ const App = () => {
 				<Row className="row middleRow">
 					<Col className="col firstCol col-md-auto">
 						<Stack>
-							{LEFT_COLUMN_ITEMS.map((icon) => (
-								<Button variant="leftIconBtn" className="btn-primary">
-									{" "}
-									{icon}{" "}
-								</Button>
+							{LEFT_COLUMN_ITEMS.map((item) => (
+								<a href={item.url}>
+									<Button variant="leftIconBtn" className="btn-primary">
+										{" "}
+										{item.icon}{" "}
+									</Button>
+								</a>
 							))}
 						</Stack>
 					</Col>
@@ -178,14 +177,14 @@ const App = () => {
 						<Button
 							variant="filesBtn"
 							className="btn-primary"
-							onClick={(previousState) => setShowFiles(!previousState)}
+							onClick={() => setDisplayedFiles((previousState) => (previousState.length > 0 ? [] : TABS))}
 						>
-							{showFiles ? <VscChevronDown /> : <VscChevronUp />}
+							{displayedFiles.length > 0 ? <VscChevronDown /> : <VscChevronUp />}
 							&nbsp; <strong>Curriculum</strong>
 						</Button>
 						<Stack>
-							{FILES_COLUMN_ITEMS.map((item) => (
-								<Button variant="filesBtn" className="btn-primary text-left">
+							{displayedFiles.map((item) => (
+								<Button variant="filesBtn" className="btn-primary text-left" onClick={openFile(item.tabId)}>
 									{item.icon}
 									&nbsp;
 									{item.text}
@@ -194,17 +193,33 @@ const App = () => {
 						</Stack>
 					</Col>
 					<Col className="col thirdCol">
-						<Tabs id="controlled-tab-example" activeKey={key} onSelect={(k) => setKey(k)} className="mb-3">
-							{openTabs.map((item) => (
+						<Tabs
+							id="controlled-tab-example"
+							// activeKey={TABS[openTabIds[0]].text}
+							activeKey={key ? key : "bemVindo.rb"}
+							onSelect={(k) => setKey(k)}
+							className="mb-3"
+						>
+							{openTabIds.map((itemId) => (
 								<Tab
-									eventKey={item.text}
+									eventKey={TABS[itemId].text}
 									title={
 										<>
-											{item.icon} &nbsp;{item.text}
+											{TABS[itemId].icon} &nbsp;{TABS[itemId].text}
+											{key === TABS[itemId].text ? (
+												<button
+													style={{ backgroundColor: "#1d232f", color: "white", border: "none" }}
+													onClick={removeTab(itemId)}
+												>
+													<VscClose />
+												</button>
+											) : (
+												false
+											)}
 										</>
 									}
 								>
-									{item.component}
+									{TABS[itemId].component}
 								</Tab>
 							))}
 						</Tabs>

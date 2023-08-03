@@ -1,0 +1,4 @@
+- arruamr useEffect de key
+- quando uma tab fexha e a tab sobre é selecionada, as setas não aparecem
+- tornar boxes da tab sobre em dragable
+- na tab welcome, verificar se a tab selecionaa esta aberta antes de setar openTab
