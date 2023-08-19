@@ -64,20 +64,21 @@ const App = () => {
 	];
 
 	const [displayedFiles, setDisplayedFiles] = useState<displayIconsTabType[]>(TABS);
-	const [openTabIds, setOpenTabIds] = useState<number[]>([...Array(TABS.length).keys()]);
+	const [openTabIds, setOpenTabIds] = useState<Array<number | undefined>>([...Array(TABS.length).keys()]);
 
 	const removeTab = (closedTabId: number) => () => {
-		setOpenTabIds((previousTabs) => previousTabs.filter((tabId) => tabId !== closedTabId));
+		setOpenTabIds((previousTabs) => previousTabs.map((tabId) => (tabId === closedTabId ? undefined : tabId)));
 	};
 
-	// CORRIGIR
 	useEffect(() => {
-		setKey(TABS.length > 0 ? TABS[openTabIds[0]].text : null);
+		setKey(openTabIds.every((el) => el === undefined) ? null : TABS[openTabIds.find((el) => el !== undefined)!].text);
 	}, openTabIds);
 
 	const openFile = (selectedFileId: number) => () => {
-		if (!openTabIds.includes(selectedFileId)) {
-			setOpenTabIds((previousTabs) => [...previousTabs, selectedFileId]);
+		if (openTabIds[selectedFileId] === undefined) {
+			setOpenTabIds((previousTabs) =>
+				previousTabs.map((item, index) => (index === selectedFileId ? selectedFileId : item))
+			);
 		}
 		setKey(TABS[selectedFileId].text);
 	};
@@ -184,7 +185,12 @@ const App = () => {
 						</Button>
 						<Stack>
 							{displayedFiles.map((item) => (
-								<Button variant="filesBtn" className="btn-primary text-left" onClick={openFile(item.tabId)}>
+								<Button
+									variant="filesBtn"
+									className="btn-primary text-left"
+									onClick={openFile(item.tabId)}
+									key={item.tabId}
+								>
 									{item.icon}
 									&nbsp;
 									{item.text}
@@ -200,28 +206,32 @@ const App = () => {
 							onSelect={(k) => setKey(k)}
 							className="mb-3"
 						>
-							{openTabIds.map((itemId) => (
-								<Tab
-									eventKey={TABS[itemId].text}
-									title={
-										<>
-											{TABS[itemId].icon} &nbsp;{TABS[itemId].text}
-											{key === TABS[itemId].text ? (
-												<button
-													style={{ backgroundColor: "#1d232f", color: "white", border: "none" }}
-													onClick={removeTab(itemId)}
-												>
-													<VscClose />
-												</button>
-											) : (
-												false
-											)}
-										</>
-									}
-								>
-									{TABS[itemId].component}
-								</Tab>
-							))}
+							{openTabIds.map((itemId) =>
+								itemId !== undefined ? (
+									<Tab
+										eventKey={TABS[itemId].text}
+										title={
+											<>
+												{TABS[itemId].icon} &nbsp;{TABS[itemId].text}
+												{key === TABS[itemId].text ? (
+													<button
+														style={{ backgroundColor: "#1d232f", color: "white", border: "none" }}
+														onClick={removeTab(itemId)}
+													>
+														<VscClose />
+													</button>
+												) : (
+													false
+												)}
+											</>
+										}
+									>
+										{TABS[itemId].component}
+									</Tab>
+								) : (
+									false
+								)
+							)}
 						</Tabs>
 					</Col>
 				</Row>

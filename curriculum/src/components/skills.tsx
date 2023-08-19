@@ -1,65 +1,86 @@
 import { VscAdd } from "react-icons/vsc";
 
-const porjectsSec1 = [
-	<ul>
-		<li>
-			<a href="https://github.com/AmandaFI/MyTopFavorite-Web-Application-Backend">
-				Aplicação em Ruby on Rails utilizando o banco de PostgreSQL, a camada ORM Active Record e seguindo o padrão
-				Model-ViewController (MVC)
-			</a>
-		</li>
-		<li>
-			<a href="https://github.com/AmandaFI/MyTopFavorite-Web-Application-Backend-2">
-				Aplicação em NestJS utilizando TypeScript, banco de dados SQLite e a camada ORM Prisma.
-			</a>
-		</li>
-	</ul>,
-	<ul>
-		<li>
-			<a href="https://github.com/AmandaFI/MyTopFavorite-Web-Application-Backend/tree/graphql-jwt-version">
-				Aplicação em Ruby on Rails utilizando a GraphQL.
-			</a>
-		</li>
-	</ul>,
-	<ul>
-		<li>
-			<a href="https://github.com/AmandaFI/MyTopFavorite-Web-Application-Frontend">
-				Front end de uma plataforma de mídia social implementado com TypeScript, Vite, React e Material UI.
-			</a>
-		</li>
-		<li>
-			<a href="https://github.com/AmandaFI/amandafi.github.io">
-				Currículo e portifólio implementado com TypeScript, Vite, React e Bootstrap.
-			</a>
-		</li>
-	</ul>,
-];
+type skillDescriptionType = {
+	desc: string;
+	link?: string;
+};
 
-const sec1Text = [
-	"Implementação de APIs seguindo o padrão REST:",
-	"Implementação de APIs utilizando GraphQL: ",
-	"Desenvolvimento de aplicações front end com React:",
-];
-
-const sec2Text = [
-	"Implementação de Redes Neurais Convolucionais (CNN):",
-	"Implementação Redes Neurais Artificiais (ANN): ",
-	"Implementação de Redes Neurias Long Short Term Memory (LSTM):",
-	"Utilização de Métodos de Machine Learning:",
-];
-
-const sec4Text = ["Processamento de imagens:", "Aplicação da técnica de Detecção de Carácteres OCR:"];
-
-const sec3Text = ["Programação Funcional:", "Injeção e Inversão de Dependência", "Memoization", "Expressões Regulares"];
-const porjectsSec3 = [
-	<ul>
-		<li>Closures</li>
-		<li>Higher Order Functions (HOF)</li>
-		<li>Imutabilidade</li>
-		<li>Funções Puras</li>
-		<li>Programação Declarativa</li>
-	</ul>,
-];
+type skillSectionType = {
+	[title: string]: Array<skillDescriptionType>;
+};
+const sections: skillSectionType = {
+	"Implementação de APIs": [
+		{
+			desc: "API implementada em Ruby on Rails, utilizando camada ORM Active Record, padrão REST e padrão Model-View-Controller (MVC).",
+			link: "https://github.com/AmandaFI/MyTopFavorite-Web-Application-Backend",
+		},
+		{
+			desc: "API implementada em NestJS, utilizando linguagem TypeScript, camada ORM Prisma e injeção de dependências.",
+			link: "https://github.com/AmandaFI/MyTopFavorite-Web-Application-Backend-2",
+		},
+		{
+			desc: "API implementada em Ruby on Rails e utilizando GraphQL.",
+			link: "https://github.com/AmandaFI/MyTopFavorite-Web-Application-Backend/tree/graphql-jwt-version",
+		},
+	],
+	"Desenvolvimento de aplicações front end em React.": [
+		{
+			desc: "Plataforma de mídia social criada uilizando Vite, React, TypeScript e Material UI.",
+			link: "https://github.com/AmandaFI/MyTopFavorite-Web-Application-Frontend",
+		},
+		{
+			desc: "Este portifólio, criado uilizando Vite, React, TypeScript e Bootstrap.",
+			link: "https://github.com/AmandaFI/amandafi.github.io",
+		},
+	],
+	"Criação de redes neurais artificiais (ANN), convolucionais (CNN) e LSTMs.": [
+		{
+			desc: "Diferenciar notícias escritas pelo ChatGPT de nóticias escritos por humanos.",
+			link: "https://github.com/AmandaFI/Human-Writing-Vs.-GPT-Writing",
+		},
+		{
+			desc: "Identificar artefatos de piscadas em sinais de eletroencefalograma.",
+			link: "https://github.com/AmandaFI/EEG_blink_detector",
+		},
+	],
+	"Utilização do paradigma Programação Funcional.": [
+		{ desc: "Closures." },
+		{ desc: "Imutabilidade." },
+		{ desc: "Higher-order Functions (HOF)." },
+		{ desc: "Funções puras, sem efeitos colaterais." },
+		{ desc: "Programação declarativa." },
+	],
+	"Aplicação de métodos de Machine Learning.": [
+		{
+			desc: "Regressão Linear interativa utilizando JavaScript e a biblioteca p5.js.",
+			link: "https://editor.p5js.org/a.ferrariiaquinta/full/uNtMH1Uzv",
+		},
+		{ desc: "XGBoost.", link: "https://github.com/AmandaFI/Human-Writing-Vs.-GPT-Writing" },
+	],
+	"Processamento de imagens e criação de GUIs em Python.": [
+		{
+			desc: "Interface utilizando PySide6 e a técnica de detecção de caracteres OCR.",
+			link: "https://github.com/AmandaFI/OCR-Text-Detector-Pyside6",
+		},
+	],
+	"Expressões Regulares.": [],
+	"Conhecimentos de conceitos da linguagem TypeScript.": [
+		{ desc: "Sistema de tipagem." },
+		{ desc: "Type guards." },
+		{ desc: "Utility types." },
+		{ desc: "Sistema de inferência (infer)." },
+	],
+	"Projetos utilizando a biblioteca p5.js (Processing)": [
+		{
+			desc: "Representação visual e interativa da série de Fourier.",
+			link: "https://editor.p5js.org/a.ferrariiaquinta/full/WhlweY9Fo",
+		},
+		{
+			desc: "Implementação interativa da curva de Bézier com N pontos arrastáveis.",
+			link: "https://editor.p5js.org/a.ferrariiaquinta/full/WhlweY9Fo",
+		},
+	],
+};
 
 const sec5Text = [
 	<i className="devicon-typescript-plain colored"></i>,
@@ -75,23 +96,6 @@ const sec5Text = [
 	<i className="devicon-linux-plain colored"></i>,
 
 	"Prisma, Vite, Windows, WSL Windows, Virtual Box",
-];
-
-{
-	/* const sec1Text: = <>Implementação de APIs seguindo o padrão REST. <br><a href="https://github.com/AmandaFI/MyTopFavorite-Web-Application-Backend">Aplicação em Ruby on Rails utilizando a camada ORM Active Record e seguindo o padrão Model-ViewController (MVC)</a></> */
-}
-
-const TEXT = [
-	{
-		id: 1,
-		sectionTitle: "Desenvolvimento Web",
-		sectionText: sec1Text,
-		sectionProjects: porjectsSec1,
-	},
-	{ id: 2, sectionTitle: "IA - Machine Learning e Deep Learning", sectionText: sec2Text, sectionProjects: [<></>] },
-	{ id: 3, sectionTitle: "Paradigmas e Conceitos", sectionText: sec3Text, sectionProjects: porjectsSec3 },
-	{ id: 4, sectionTitle: "Visão Computacional", sectionText: sec4Text, sectionProjects: [<></>] },
-	{ id: 5, sectionTitle: "Tecnologias", sectionText: sec5Text, sectionProjects: [<></>] },
 ];
 
 const Skills = () => {
@@ -130,7 +134,7 @@ const Skills = () => {
 					&nbsp; Code&nbsp;&nbsp;&nbsp; <VscAdd />
 					&nbsp; Markdown
 				</div>
-				{TEXT.map((item) => (
+				{Object.entries(sections).map(([section, projects]) => (
 					<>
 						<div
 							style={{
@@ -142,7 +146,7 @@ const Skills = () => {
 								marginTop: 10,
 							}}
 						>
-							{item.sectionTitle}
+							{section}
 						</div>
 						<div
 							style={{
@@ -159,9 +163,13 @@ const Skills = () => {
 								flexDirection: "column",
 							}}
 						>
-							{item.sectionText.map((text, index) => (
+							{projects.map((project) => (
 								<>
-									{text} <br /> {item.sectionProjects[index] ? item.sectionProjects[index] : false}
+									{
+										<p>
+											{project.desc} {project.link ? <a href={project.link}>Ver mais.</a> : false}
+										</p>
+									}
 								</>
 							))}
 						</div>
