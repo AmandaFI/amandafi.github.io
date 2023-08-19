@@ -80,7 +80,7 @@ const App = () => {
 				previousTabs.map((item, index) => (index === selectedFileId ? selectedFileId : item))
 			);
 		}
-		setKey(TABS[selectedFileId].text);
+		// setKey(TABS[selectedFileId].text);
 	};
 
 	return (
@@ -139,6 +139,10 @@ const App = () => {
 		border-bottom:0px !important;
 	  }
 
+		.nav-tabs {
+			background-color: #171c26 !important;
+		}
+
 	  .row>* {
 		paddding-right: 0 !important;
 		paddding-left: 0 !important;
@@ -157,108 +161,109 @@ const App = () => {
 	  
     `}
 			</style>
-			<div className="gridGeneric">
-				<Row className="row topRow">
-					<Col>1</Col>
-				</Row>
-				<Row className="row middleRow">
-					<Col className="col firstCol col-md-auto">
-						<Stack>
-							{LEFT_COLUMN_ITEMS.map((item) => (
-								<a href={item.url}>
-									<Button variant="leftIconBtn" className="btn-primary">
-										{" "}
-										{item.icon}{" "}
-									</Button>
-								</a>
-							))}
-						</Stack>
-					</Col>
-					<Col className="col secondCol" xs={2}>
-						<Button
-							variant="filesBtn"
-							className="btn-primary"
-							onClick={() => setDisplayedFiles((previousState) => (previousState.length > 0 ? [] : TABS))}
-						>
-							{displayedFiles.length > 0 ? <VscChevronDown /> : <VscChevronUp />}
-							&nbsp; <strong>Curriculum</strong>
-						</Button>
-						<Stack>
-							{displayedFiles.map((item) => (
-								<Button
-									variant="filesBtn"
-									className="btn-primary text-left"
-									onClick={openFile(item.tabId)}
-									key={item.tabId}
-								>
-									{item.icon}
-									&nbsp;
-									{item.text}
+			{/* <div className="gridGeneric"> */}
+			<Row className="row topRow">
+				<Col>1</Col>
+			</Row>
+			<Row className="row middleRow">
+				<Col className="col firstCol col-md-auto">
+					<Stack>
+						{LEFT_COLUMN_ITEMS.map((item) => (
+							<a href={item.url}>
+								<Button variant="leftIconBtn" className="btn-primary">
+									{" "}
+									{item.icon}{" "}
 								</Button>
-							))}
-						</Stack>
-					</Col>
-					<Col className="col thirdCol">
-						<Tabs
-							id="controlled-tab-example"
-							// activeKey={TABS[openTabIds[0]].text}
-							activeKey={key ? key : "bemVindo.rb"}
-							onSelect={(k) => setKey(k)}
-							className="mb-3"
-						>
-							{openTabIds.map((itemId) =>
-								itemId !== undefined ? (
-									<Tab
-										eventKey={TABS[itemId].text}
-										title={
-											<>
-												{TABS[itemId].icon} &nbsp;{TABS[itemId].text}
-												{key === TABS[itemId].text ? (
-													<button
-														style={{ backgroundColor: "#1d232f", color: "white", border: "none" }}
-														onClick={removeTab(itemId)}
-													>
-														<VscClose />
-													</button>
-												) : (
-													false
-												)}
-											</>
-										}
-									>
-										{TABS[itemId].component}
-									</Tab>
-								) : (
-									false
-								)
-							)}
-						</Tabs>
-					</Col>
-				</Row>
-				<Row className="row bottonRow">
-					<Stack direction="horizontal" className="bottonStack">
-						<div>
-							<span className="wslButton">
-								<VscRemote />
-								&nbsp; WSL: Ubuntu
-							</span>
-							&nbsp;&nbsp;&nbsp;
-							<span className="bottomLeft">
-								<VscSourceControl />
-								&nbsp; main
-							</span>
-						</div>
-						<div className="p-2 ms-auto"></div>
-						<div className="p-2">
-							<Stack direction="horizontal">
-								Feito com: &nbsp;
-								<i className="devicon-react-original colored"></i> &nbsp;React&nbsp;&nbsp;
-								<i className="devicon-bootstrap-plain colored"></i> &nbsp;Bootstrap
-							</Stack>
-						</div>
+							</a>
+						))}
 					</Stack>
-				</Row>
-			</div>
+				</Col>
+				<Col className="col secondCol" xs={2}>
+					<Button
+						variant="filesBtn"
+						className="btn-primary"
+						onClick={() => setDisplayedFiles((previousState) => (previousState.length > 0 ? [] : TABS))}
+					>
+						{displayedFiles.length > 0 ? <VscChevronDown /> : <VscChevronUp />}
+						&nbsp; <strong>Curriculum</strong>
+					</Button>
+					<Stack>
+						{displayedFiles.map((item) => (
+							<Button
+								variant="filesBtn"
+								className="btn-primary text-left"
+								onClick={openFile(item.tabId)}
+								key={item.tabId}
+							>
+								{item.icon}
+								&nbsp;
+								{item.text}
+							</Button>
+						))}
+					</Stack>
+				</Col>
+				<Col className="col thirdCol">
+					<Tabs
+						id="controlled-tab-example"
+						// activeKey={TABS[openTabIds[0]].text}
+						activeKey={key ? key : "bemVindo.rb"}
+						onSelect={(k) => setKey(k)}
+						className="mb-3"
+					>
+						{openTabIds.map((itemId) =>
+							itemId !== undefined ? (
+								<Tab
+									style={{ backgroundColor: "#171c26" }}
+									eventKey={TABS[itemId].text}
+									title={
+										<>
+											{TABS[itemId].icon} &nbsp;{TABS[itemId].text}
+											{key === TABS[itemId].text ? (
+												<button
+													style={{ backgroundColor: "#1d232f", color: "white", border: "none" }}
+													onClick={removeTab(itemId)}
+												>
+													<VscClose />
+												</button>
+											) : (
+												false
+											)}
+										</>
+									}
+								>
+									{TABS[itemId].component}
+								</Tab>
+							) : (
+								false
+							)
+						)}
+					</Tabs>
+				</Col>
+			</Row>
+			<Row className="row bottonRow">
+				<Stack direction="horizontal" className="bottonStack">
+					<div>
+						<span className="wslButton">
+							<VscRemote />
+							&nbsp; WSL: Ubuntu
+						</span>
+						&nbsp;&nbsp;&nbsp;
+						<span className="bottomLeft">
+							<VscSourceControl />
+							&nbsp; main
+						</span>
+					</div>
+					<div className="p-2 ms-auto"></div>
+					<div className="p-2">
+						<Stack direction="horizontal">
+							Feito com: &nbsp;
+							<i className="devicon-react-original colored"></i> &nbsp;React&nbsp;&nbsp;
+							<i className="devicon-bootstrap-plain colored"></i> &nbsp;Bootstrap
+						</Stack>
+					</div>
+				</Stack>
+			</Row>
+			{/* </div> */}
 		</>
 	);
 };

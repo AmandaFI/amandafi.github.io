@@ -55,7 +55,10 @@ const sections: skillSectionType = {
 			desc: "Regressão Linear interativa utilizando JavaScript e a biblioteca p5.js.",
 			link: "https://editor.p5js.org/a.ferrariiaquinta/full/uNtMH1Uzv",
 		},
-		{ desc: "XGBoost.", link: "https://github.com/AmandaFI/Human-Writing-Vs.-GPT-Writing" },
+		{
+			desc: "Projeto utilizando a técnica XGBoost.",
+			link: "https://github.com/AmandaFI/Human-Writing-Vs.-GPT-Writing",
+		},
 	],
 	"Processamento de imagens e criação de GUIs em Python.": [
 		{
@@ -63,7 +66,6 @@ const sections: skillSectionType = {
 			link: "https://github.com/AmandaFI/OCR-Text-Detector-Pyside6",
 		},
 	],
-	"Expressões Regulares.": [],
 	"Conhecimentos de conceitos da linguagem TypeScript.": [
 		{ desc: "Sistema de tipagem." },
 		{ desc: "Type guards." },
@@ -80,6 +82,7 @@ const sections: skillSectionType = {
 			link: "https://editor.p5js.org/a.ferrariiaquinta/full/WhlweY9Fo",
 		},
 	],
+	"Expressões Regulares.": [{ desc: "Construção e aplicação de RegExp" }],
 };
 
 const sec5Text = [
