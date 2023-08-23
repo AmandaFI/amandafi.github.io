@@ -1,6 +1,16 @@
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { VscChevronDown, VscRemote, VscSourceControl, VscChevronUp, VscClose } from "react-icons/vsc";
+import {
+	VscChevronDown,
+	VscRemote,
+	VscSourceControl,
+	VscChevronUp,
+	VscClose,
+	VscLayoutSidebarLeft,
+	VscLayoutPanel,
+	VscLayoutSidebarRightOff,
+	VscLayout,
+} from "react-icons/vsc";
 import { AiFillLinkedin, AiOutlineGithub } from "react-icons/ai";
 import { FaEnvelope } from "react-icons/fa";
 import Button from "react-bootstrap/Button";
@@ -30,7 +40,7 @@ export type displayIconsTabType = {
 const LEFT_COLUMN_ITEMS = [
 	{ icon: <AiFillLinkedin size={32} className="leftColumnIconStyle" />, url: "https://www.linkedin.com/in/amandafi/" },
 	{ icon: <AiOutlineGithub size={32} className="leftColumnIconStyle" />, url: "https://github.com/AmandaFI" },
-	{ icon: <FaEnvelope size={28} className="leftColumnIconStyle" />, url: "" },
+	{ icon: <FaEnvelope size={28} className="leftColumnIconStyle" />, url: "mailto:a.ferrari.iaquinta@gmail.com" },
 ];
 
 const App = () => {
@@ -107,6 +117,7 @@ const App = () => {
 
 	.btn-leftIconBtn {
 		background-color: #141820;
+		color: #a8b5d1;
 		border: none;
 		margin-left: 0.5rem;
 	}
@@ -184,7 +195,20 @@ const App = () => {
 					</div>
 				</Col>
 				<Col className="col-sm">
-					<div style={{ display: "flex", textAlign: "right", justifyContent: "right" }}></div>
+					<div
+						style={{
+							display: "flex",
+							textAlign: "right",
+							justifyContent: "right",
+							marginRight: "1rem",
+							padding: "0.2%",
+						}}
+					>
+						<VscLayoutSidebarLeft style={{ color: "#a8b5d1", marginRight: "0.5rem" }} />
+						<VscLayoutPanel style={{ color: "#a8b5d1", marginRight: "0.5rem" }} />
+						<VscLayoutSidebarRightOff style={{ color: "#a8b5d1", marginRight: "0.5rem" }} />
+						<VscLayout style={{ color: "#a8b5d1", marginRight: "0.5rem" }} />
+					</div>
 				</Col>
 			</Row>
 			<Row className="row middleRow">
@@ -219,6 +243,7 @@ const App = () => {
 								className="btn-primary text-left"
 								onClick={openFile(item.tabId)}
 								key={item.tabId}
+								style={{ marginLeft: "1.5rem" }}
 							>
 								{item.icon}
 								&nbsp;
@@ -264,7 +289,7 @@ const App = () => {
 					</Tabs>
 				</Col>
 			</Row>
-			<Row className="row " style={{ backgroundColor: "#1d232f", color: "white" }}>
+			<Row className="row bottonRow">
 				<Stack direction="horizontal" className="bottonStack">
 					<div
 						style={{
@@ -279,14 +304,14 @@ const App = () => {
 						<VscRemote />
 						&nbsp; WSL: Ubuntu
 					</div>
-					<div style={{ padding: 0, margin: 0 }}>
+					<div style={{ padding: 0, margin: 0, color: "#a8b5d1" }}>
 						&nbsp;&nbsp;&nbsp;
 						<VscSourceControl />
 						&nbsp; main
 					</div>
 					<div className="p-2 ms-auto" style={{ padding: 0, margin: 0 }}></div>
 					<div className="p-2" style={{ padding: 0, margin: 0 }}>
-						<Stack direction="horizontal">
+						<Stack direction="horizontal" style={{ color: "#a8b5d1" }}>
 							Feito com: &nbsp;
 							<i className="devicon-react-original colored"></i> &nbsp;React&nbsp;&nbsp;
 							<i className="devicon-bootstrap-plain colored"></i> &nbsp;Bootstrap
