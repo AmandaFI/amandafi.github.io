@@ -53,7 +53,7 @@ const App = () => {
 			);
 		}
 		setKey(TABS[selectedFileId].text);
-		console.log("foi");
+		// console.log("foi");
 	};
 
 	const TABS: displayIconsTabType[] = [
@@ -89,11 +89,13 @@ const App = () => {
 
 	const removeTab = (closedTabId: number) => () => {
 		setOpenTabIds((previousTabs) => previousTabs.map((tabId) => (tabId === closedTabId ? undefined : tabId)));
+		setKey(TABS[openTabIds.find((el) => el !== undefined)!].text);
 	};
 
-	useEffect(() => {
-		setKey(openTabIds.every((el) => el === undefined) ? null : TABS[openTabIds.find((el) => el !== undefined)!].text);
-	}, openTabIds);
+	// useEffect(() => {
+	// 	setKey(openTabIds.every((el) => el === undefined) ? null : TABS[openTabIds.find((el) => el !== undefined)!].text);
+	// 	console.log("rodouuu");
+	// }, openTabIds);
 
 	return (
 		<>
@@ -177,10 +179,10 @@ const App = () => {
 			</style>
 			{/* <div className="gridGeneric"> */}
 			<Row className="row topRow" style={{ color: "white" }}>
-				<Col className="col-sm">
+				<Col>
 					<div style={{ display: "flex", textAlign: "left", justifyContent: "left" }}></div>
 				</Col>
-				<Col className="col-sm">
+				<Col>
 					<div
 						style={{
 							display: "flex",
@@ -194,7 +196,7 @@ const App = () => {
 						Currículo - Portifólio - Amanda F. Iaquinta
 					</div>
 				</Col>
-				<Col className="col-sm">
+				<Col>
 					<div
 						style={{
 							display: "flex",

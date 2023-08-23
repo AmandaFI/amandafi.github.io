@@ -8,7 +8,7 @@ type skillSectionType = {
 };
 
 export const skillSectionsPort: skillSectionType = {
-	"Implementação de APIs": [
+	"Implementação de APIs.": [
 		{
 			desc: "API implementada em Ruby on Rails, utilizando camada ORM Active Record, padrão REST e padrão Model-View-Controller (MVC).",
 			link: "https://github.com/AmandaFI/MyTopFavorite-Web-Application-Backend",
@@ -71,7 +71,7 @@ export const skillSectionsPort: skillSectionType = {
 		{ desc: "Utility types." },
 		{ desc: "Sistema de inferência (infer)." },
 	],
-	"Projetos utilizando a biblioteca p5.js (Processing)": [
+	"Projetos utilizando a biblioteca p5.js (Processing).": [
 		{
 			desc: "Representação visual e interativa da série de Fourier.",
 			link: "https://editor.p5js.org/a.ferrariiaquinta/full/WhlweY9Fo",
@@ -96,7 +96,7 @@ export const skillSectionsPort: skillSectionType = {
 };
 
 export const skillSectionsEng: skillSectionType = {
-	"APIs implementation": [
+	"APIs implementation.": [
 		{
 			desc: "API implemented using Ruby on Rails, Active Record ORM layer, REST pattern and Model-View-Controller (MVC) pattern.",
 			link: "https://github.com/AmandaFI/MyTopFavorite-Web-Application-Backend",
