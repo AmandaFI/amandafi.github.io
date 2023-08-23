@@ -33,21 +33,21 @@ const selectedSkillDiv: CSSProperties = {
 	borderLeftColor: "#AAAAAA",
 };
 
-const sec5Text = [
-	<i className="devicon-typescript-plain colored"></i>,
-	<i className="devicon-javascript-plain colored"></i>,
-	<i className="devicon-python-plain colored"></i>,
-	<i className="devicon-nestjs-plain-wordmark colored"></i>,
-	<i className="devicon-react-original-wordmark colored"></i>,
-	<i className="devicon-ruby-plain colored"></i>,
-	<i className="devicon-rails-plain-wordmark colored"></i>,
-	<i className="devicon-postgresql-plain-wordmark colored"></i>,
-	<i className="devicon-sqlite-plain-wordmark colored"></i>,
-	<i className="devicon-github-original-wordmark colored"></i>,
-	<i className="devicon-linux-plain colored"></i>,
+// const sec5Text = [
+// 	<i className="devicon-typescript-plain colored"></i>,
+// 	<i className="devicon-javascript-plain colored"></i>,
+// 	<i className="devicon-python-plain colored"></i>,
+// 	<i className="devicon-nestjs-plain-wordmark colored"></i>,
+// 	<i className="devicon-react-original-wordmark colored"></i>,
+// 	<i className="devicon-ruby-plain colored"></i>,
+// 	<i className="devicon-rails-plain-wordmark colored"></i>,
+// 	<i className="devicon-postgresql-plain-wordmark colored"></i>,
+// 	<i className="devicon-sqlite-plain-wordmark colored"></i>,
+// 	<i className="devicon-github-original-wordmark colored"></i>,
+// 	<i className="devicon-linux-plain colored"></i>,
 
-	"Prisma, Vite, Windows, WSL Windows, Virtual Box",
-];
+// 	"Prisma, Vite, Windows, WSL Windows, Virtual Box",
+// ];
 
 const Skills = () => {
 	//const [clickedCell, setClickedCell] = useState<number | null>(null);

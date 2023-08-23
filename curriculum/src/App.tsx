@@ -80,7 +80,7 @@ const App = () => {
 				previousTabs.map((item, index) => (index === selectedFileId ? selectedFileId : item))
 			);
 		}
-		// setKey(TABS[selectedFileId].text);
+		setKey(TABS[selectedFileId].text);
 	};
 
 	return (
