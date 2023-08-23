@@ -90,7 +90,7 @@ const App = () => {
     .btn-filesBtn {
         background-color: #171c26;
         border: none;
-		text-align: left !important;
+				text-align: left !important;
     }
 
     .btn-bottomLeft {
@@ -100,20 +100,17 @@ const App = () => {
         font-size: 17;
         display: "flex";
         background-color: "#457dff";
-        border: none;
-        
-        
+        border: none; 
     }
 
 	.btn-leftIconBtn {
 		background-color: #141820;
 		border: none;
+		margin-left: 0.5rem;
 	}
 
     .div-bottomLeft {
         padding: 0;
-        
-        
     }
 
 	.nav {
@@ -141,12 +138,15 @@ const App = () => {
 
 		.nav-tabs {
 			background-color: #171c26 !important;
+			diplay: flex;
+			margin: 0;
 		}
 
 	  .row>* {
 		paddding-right: 0 !important;
 		paddding-left: 0 !important;
 		margin-top: 0 !important;
+		--bs-gutter-x: 0 !important;
 
 	  }
 
@@ -213,7 +213,6 @@ const App = () => {
 						{openTabIds.map((itemId) =>
 							itemId !== undefined ? (
 								<Tab
-									style={{ backgroundColor: "#171c26" }}
 									eventKey={TABS[itemId].text}
 									title={
 										<>

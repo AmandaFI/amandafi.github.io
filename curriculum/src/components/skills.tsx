@@ -1,88 +1,36 @@
 import { VscAdd } from "react-icons/vsc";
+import { skillSectionsPort } from "../utils/text";
+import { CSSProperties, useState } from "react";
 
-type skillDescriptionType = {
-	desc: string;
-	link?: string;
+const sections = skillSectionsPort;
+
+const skillDescriptionDiv: CSSProperties = {
+	backgroundColor: "#171c26",
+	color: "white",
+	marginLeft: 22,
+	marginRight: 22,
+	marginTop: 10,
+	padding: 5,
+	paddingLeft: 8,
+	width: "100%",
+	display: "flex",
+	flexDirection: "column",
 };
 
-type skillSectionType = {
-	[title: string]: Array<skillDescriptionType>;
+const selectedDescriptionSkillDiv: CSSProperties = {
+	...skillDescriptionDiv,
+	borderStyle: "solid",
+	borderColor: "#123456",
 };
-const sections: skillSectionType = {
-	"Implementação de APIs": [
-		{
-			desc: "API implementada em Ruby on Rails, utilizando camada ORM Active Record, padrão REST e padrão Model-View-Controller (MVC).",
-			link: "https://github.com/AmandaFI/MyTopFavorite-Web-Application-Backend",
-		},
-		{
-			desc: "API implementada em NestJS, utilizando linguagem TypeScript, camada ORM Prisma e injeção de dependências.",
-			link: "https://github.com/AmandaFI/MyTopFavorite-Web-Application-Backend-2",
-		},
-		{
-			desc: "API implementada em Ruby on Rails e utilizando GraphQL.",
-			link: "https://github.com/AmandaFI/MyTopFavorite-Web-Application-Backend/tree/graphql-jwt-version",
-		},
-	],
-	"Desenvolvimento de aplicações front end em React.": [
-		{
-			desc: "Plataforma de mídia social criada uilizando Vite, React, TypeScript e Material UI.",
-			link: "https://github.com/AmandaFI/MyTopFavorite-Web-Application-Frontend",
-		},
-		{
-			desc: "Este portifólio, criado uilizando Vite, React, TypeScript e Bootstrap.",
-			link: "https://github.com/AmandaFI/amandafi.github.io",
-		},
-	],
-	"Criação de redes neurais artificiais (ANN), convolucionais (CNN) e LSTMs.": [
-		{
-			desc: "Diferenciar notícias escritas pelo ChatGPT de nóticias escritos por humanos.",
-			link: "https://github.com/AmandaFI/Human-Writing-Vs.-GPT-Writing",
-		},
-		{
-			desc: "Identificar artefatos de piscadas em sinais de eletroencefalograma.",
-			link: "https://github.com/AmandaFI/EEG_blink_detector",
-		},
-	],
-	"Utilização do paradigma Programação Funcional.": [
-		{ desc: "Closures." },
-		{ desc: "Imutabilidade." },
-		{ desc: "Higher-order Functions (HOF)." },
-		{ desc: "Funções puras, sem efeitos colaterais." },
-		{ desc: "Programação declarativa." },
-	],
-	"Aplicação de métodos de Machine Learning.": [
-		{
-			desc: "Regressão Linear interativa utilizando JavaScript e a biblioteca p5.js.",
-			link: "https://editor.p5js.org/a.ferrariiaquinta/full/uNtMH1Uzv",
-		},
-		{
-			desc: "Projeto utilizando a técnica XGBoost.",
-			link: "https://github.com/AmandaFI/Human-Writing-Vs.-GPT-Writing",
-		},
-	],
-	"Processamento de imagens e criação de GUIs em Python.": [
-		{
-			desc: "Interface utilizando PySide6 e a técnica de detecção de caracteres OCR.",
-			link: "https://github.com/AmandaFI/OCR-Text-Detector-Pyside6",
-		},
-	],
-	"Conhecimentos de conceitos da linguagem TypeScript.": [
-		{ desc: "Sistema de tipagem." },
-		{ desc: "Type guards." },
-		{ desc: "Utility types." },
-		{ desc: "Sistema de inferência (infer)." },
-	],
-	"Projetos utilizando a biblioteca p5.js (Processing)": [
-		{
-			desc: "Representação visual e interativa da série de Fourier.",
-			link: "https://editor.p5js.org/a.ferrariiaquinta/full/WhlweY9Fo",
-		},
-		{
-			desc: "Implementação interativa da curva de Bézier com N pontos arrastáveis.",
-			link: "https://editor.p5js.org/a.ferrariiaquinta/full/WhlweY9Fo",
-		},
-	],
-	"Expressões Regulares.": [{ desc: "Construção e aplicação de RegExp" }],
+
+const skillDiv: CSSProperties = {
+	display: "flex",
+};
+
+const selectedSkillDiv: CSSProperties = {
+	...skillDiv,
+	borderLeftStyle: "solid",
+	borderLeftColor: "#AAAAAA",
 };
 
 const sec5Text = [
@@ -103,6 +51,7 @@ const sec5Text = [
 
 const Skills = () => {
 	//const [clickedCell, setClickedCell] = useState<number | null>(null);
+	const [selectedDiv, setSelectedDiv] = useState(0);
 
 	return (
 		<>
@@ -137,7 +86,7 @@ const Skills = () => {
 					&nbsp; Code&nbsp;&nbsp;&nbsp; <VscAdd />
 					&nbsp; Markdown
 				</div>
-				{Object.entries(sections).map(([section, projects]) => (
+				{Object.entries(sections).map(([section, projects], index) => (
 					<>
 						<div
 							style={{
@@ -148,33 +97,34 @@ const Skills = () => {
 								marginRight: 22,
 								marginTop: 10,
 							}}
+							onClick={() => setSelectedDiv(index)}
 						>
 							{section}
 						</div>
-						<div
-							style={{
-								backgroundColor: "#171c26",
-								// height: "20vh",
-								color: "white",
-								marginLeft: 22,
-								marginRight: 22,
-								marginTop: 10,
-								padding: 5,
-								paddingLeft: 8,
+						<div style={index === selectedDiv ? { ...selectedSkillDiv } : { ...skillDiv }}>
+							{/* aaaa */}
 
-								display: "flex",
-								flexDirection: "column",
-							}}
-						>
-							{projects.map((project) => (
-								<>
-									{
-										<p>
-											{project.desc} {project.link ? <a href={project.link}>Ver mais.</a> : false}
-										</p>
-									}
-								</>
-							))}
+							<div
+								style={index === selectedDiv ? { ...selectedDescriptionSkillDiv } : { ...skillDescriptionDiv }}
+								onClick={() => setSelectedDiv(index)}
+							>
+								{projects.map((project) => (
+									<ul>
+										{
+											<li>
+												{project.desc}{" "}
+												{project.link ? (
+													<a href={project.link} style={{ color: "#E5E5E5" }}>
+														Ver mais.
+													</a>
+												) : (
+													false
+												)}
+											</li>
+										}
+									</ul>
+								))}
+							</div>
 						</div>
 					</>
 				))}

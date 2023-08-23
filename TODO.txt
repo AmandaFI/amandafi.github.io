@@ -1,7 +1,7 @@
-- arruamr useEffect de key
 - quando uma tab fexha e a tab sobre é selecionada, as setas não aparecem
 - tornar boxes da tab sobre em dragable
 - na tab welcome, verificar se a tab selecionaa esta aberta antes de setar openTab
 - aumentar tamanho da letra dos nomes de arquivos e tabs e tab skills
 - tab projetos
 - terminar tab skills
+- opção em ingles
