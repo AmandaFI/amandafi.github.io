@@ -46,7 +46,7 @@ export const skillSectionsPort: skillSectionType = {
 		{ desc: "Closures." },
 		{ desc: "Imutabilidade." },
 		{ desc: "Higher-order Functions (HOF)." },
-		{ desc: "Funções puras, sem efeitos colaterais." },
+		{ desc: "Funções puras." },
 		{ desc: "Programação declarativa." },
 	],
 	"Aplicação de métodos de Machine Learning.": [
@@ -89,7 +89,7 @@ export const skillSectionsPort: skillSectionType = {
 	],
 	"Utilização de diferentes Sistemas Operacionais.": [
 		{ desc: "Windows" },
-		{ desc: "Linus" },
+		{ desc: "Linux" },
 		{ desc: "WSL Windows" },
 		{ desc: "Virtual Box" },
 	],
@@ -177,7 +177,7 @@ export const skillSectionsEng: skillSectionType = {
 	],
 	"Use of different Operational Systems.": [
 		{ desc: "Windows" },
-		{ desc: "Linus" },
+		{ desc: "Linux" },
 		{ desc: "WSL Windows" },
 		{ desc: "Virtual Box" },
 	],

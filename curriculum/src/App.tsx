@@ -11,13 +11,14 @@ import Contact from "./components/contact";
 import Welcome from "./components/welcome";
 import About from "./components/about";
 import Skills from "./components/skills";
-import Projects from "./components/projects";
+// import Projects from "./components/projects";
 import Stack from "react-bootstrap/Stack";
 import "./App.css";
 
 // npm run deploy
 
-type Tabs = "bemVindo.rb" | "sobre.tsx" | "contato.ts" | "habilidades.ipynb" | "projetos.js";
+type Tabs = "bemVindo.rb" | "sobre.tsx" | "contato.ts" | "habilidades.ipynb";
+// type Tabs = "bemVindo.rb" | "sobre.tsx" | "contato.ts" | "habilidades.ipynb" | "projetos.js";
 
 export type displayIconsTabType = {
 	icon: JSX.Element;
@@ -35,11 +36,21 @@ const LEFT_COLUMN_ITEMS = [
 const App = () => {
 	const [key, setKey] = useState<string | null>("bemVindo.rb");
 
+	const openFile = (selectedFileId: number) => () => {
+		if (openTabIds[selectedFileId] === undefined) {
+			setOpenTabIds((previousTabs) =>
+				previousTabs.map((item, index) => (index === selectedFileId ? selectedFileId : item))
+			);
+		}
+		setKey(TABS[selectedFileId].text);
+		console.log("foi");
+	};
+
 	const TABS: displayIconsTabType[] = [
 		{
 			icon: <i className="devicon-ruby-plain colored"></i>,
 			text: "bemVindo.rb",
-			component: <Welcome setCurrentTab={setKey} />,
+			component: <Welcome openNewTab={openFile} setCurrentTab={setKey} />,
 			tabId: 0,
 		},
 		{ icon: <i className="devicon-react-original colored"></i>, text: "sobre.tsx", component: <About />, tabId: 1 },
@@ -55,12 +66,12 @@ const App = () => {
 			component: <Skills />,
 			tabId: 3,
 		},
-		{
-			icon: <i className="devicon-javascript-plain colored"></i>,
-			text: "projetos.js",
-			component: <Projects />,
-			tabId: 4,
-		},
+		// {
+		// 	icon: <i className="devicon-javascript-plain colored"></i>,
+		// 	text: "projetos.js",
+		// 	component: <Projects />,
+		// 	tabId: 4,
+		// },
 	];
 
 	const [displayedFiles, setDisplayedFiles] = useState<displayIconsTabType[]>(TABS);
@@ -73,15 +84,6 @@ const App = () => {
 	useEffect(() => {
 		setKey(openTabIds.every((el) => el === undefined) ? null : TABS[openTabIds.find((el) => el !== undefined)!].text);
 	}, openTabIds);
-
-	const openFile = (selectedFileId: number) => () => {
-		if (openTabIds[selectedFileId] === undefined) {
-			setOpenTabIds((previousTabs) =>
-				previousTabs.map((item, index) => (index === selectedFileId ? selectedFileId : item))
-			);
-		}
-		setKey(TABS[selectedFileId].text);
-	};
 
 	return (
 		<>
@@ -111,6 +113,7 @@ const App = () => {
 
     .div-bottomLeft {
         padding: 0;
+				margin: 0;
     }
 
 	.nav {
@@ -143,8 +146,8 @@ const App = () => {
 		}
 
 	  .row>* {
-		paddding-right: 0 !important;
-		paddding-left: 0 !important;
+		padding-right: 0 !important;
+		padding-left: 0 !important;
 		margin-top: 0 !important;
 		--bs-gutter-x: 0 !important;
 
@@ -162,8 +165,27 @@ const App = () => {
     `}
 			</style>
 			{/* <div className="gridGeneric"> */}
-			<Row className="row topRow">
-				<Col>1</Col>
+			<Row className="row topRow" style={{ color: "white" }}>
+				<Col className="col-sm">
+					<div style={{ display: "flex", textAlign: "left", justifyContent: "left" }}></div>
+				</Col>
+				<Col className="col-sm">
+					<div
+						style={{
+							display: "flex",
+							textAlign: "center",
+							justifyContent: "center",
+							fontSize: 13,
+							color: "#a8b5d1",
+							padding: "0.2%",
+						}}
+					>
+						Currículo - Portifólio - Amanda F. Iaquinta
+					</div>
+				</Col>
+				<Col className="col-sm">
+					<div style={{ display: "flex", textAlign: "right", justifyContent: "right" }}></div>
+				</Col>
 			</Row>
 			<Row className="row middleRow">
 				<Col className="col firstCol col-md-auto">
@@ -185,7 +207,10 @@ const App = () => {
 						onClick={() => setDisplayedFiles((previousState) => (previousState.length > 0 ? [] : TABS))}
 					>
 						{displayedFiles.length > 0 ? <VscChevronDown /> : <VscChevronUp />}
-						&nbsp; <strong>Curriculum</strong>
+						&nbsp;{" "}
+						<strong>
+							<span style={{ fontSize: "1.1rem" }}>Curriculum</span>
+						</strong>
 					</Button>
 					<Stack>
 						{displayedFiles.map((item) => (
@@ -197,7 +222,7 @@ const App = () => {
 							>
 								{item.icon}
 								&nbsp;
-								{item.text}
+								<span style={{ fontSize: "1.1rem" }}>{item.text}</span>
 							</Button>
 						))}
 					</Stack>
@@ -239,21 +264,28 @@ const App = () => {
 					</Tabs>
 				</Col>
 			</Row>
-			<Row className="row bottonRow">
+			<Row className="row " style={{ backgroundColor: "#1d232f", color: "white" }}>
 				<Stack direction="horizontal" className="bottonStack">
-					<div>
-						<span className="wslButton">
-							<VscRemote />
-							&nbsp; WSL: Ubuntu
-						</span>
-						&nbsp;&nbsp;&nbsp;
-						<span className="bottomLeft">
-							<VscSourceControl />
-							&nbsp; main
-						</span>
+					<div
+						style={{
+							paddingLeft: "1.5%",
+							paddingRight: "1%",
+							paddingTop: "0.4%",
+							paddingBottom: "0.4%",
+							margin: 0,
+							backgroundColor: "#457dff",
+						}}
+					>
+						<VscRemote />
+						&nbsp; WSL: Ubuntu
 					</div>
-					<div className="p-2 ms-auto"></div>
-					<div className="p-2">
+					<div style={{ padding: 0, margin: 0 }}>
+						&nbsp;&nbsp;&nbsp;
+						<VscSourceControl />
+						&nbsp; main
+					</div>
+					<div className="p-2 ms-auto" style={{ padding: 0, margin: 0 }}></div>
+					<div className="p-2" style={{ padding: 0, margin: 0 }}>
 						<Stack direction="horizontal">
 							Feito com: &nbsp;
 							<i className="devicon-react-original colored"></i> &nbsp;React&nbsp;&nbsp;

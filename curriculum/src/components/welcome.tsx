@@ -1,4 +1,5 @@
 import { Button, Stack, ThemeProvider, Typography, createTheme } from "@mui/material";
+import Curriculo from "../curriculo.pdf";
 
 const theme = createTheme({
 	typography: {
@@ -9,7 +10,7 @@ const theme = createTheme({
 });
 
 type welcomePropsType = {
-	// tabs: number[];
+	openNewTab: (selectedFileId: number) => () => void;
 	setCurrentTab: React.Dispatch<React.SetStateAction<string | null>>;
 };
 
@@ -29,19 +30,15 @@ const Welcome = (props: welcomePropsType) => {
 				</Typography>
 				<Stack direction="row" spacing={3}>
 					<ThemeProvider theme={theme}>
-						<Button
-							onClick={() => props.setCurrentTab("projetos.js")}
-							sx={{ fontSize: 17, border: 1, color: "#a8b5d1" }}
-						>
-							Portifólio
+						<Button onClick={props.openNewTab(3)} sx={{ fontSize: 17, border: 1, color: "#a8b5d1" }}>
+							Projetos
 						</Button>
-						<Button
-							onClick={() => props.setCurrentTab("contato.ts")}
-							sx={{ fontSize: 17, border: 1, color: "#a8b5d1" }}
-						>
+						<Button onClick={props.openNewTab(2)} sx={{ fontSize: 17, border: 1, color: "#a8b5d1" }}>
 							Contato
 						</Button>
-						<Button sx={{ fontSize: 17, border: 1, color: "#a8b5d1" }}>Currículo</Button>
+						<a href={Curriculo} download="Amanda_Iaquinta-Currículo" target="_blank" rel="noopener noreferrer">
+							<Button sx={{ fontSize: 17, border: 1, color: "#a8b5d1" }}>Currículo</Button>
+						</a>
 					</ThemeProvider>
 				</Stack>
 			</Stack>
