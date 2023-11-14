@@ -88,14 +88,20 @@ const App = () => {
 	const [openTabIds, setOpenTabIds] = useState<Array<number | undefined>>([...Array(TABS.length).keys()]);
 
 	const removeTab = (closedTabId: number) => () => {
+		setKey(
+			openTabIds.find((el, index) => el !== undefined && index !== closedTabId)
+				? TABS[openTabIds.find((el, index) => el !== undefined && index !== closedTabId)!].text
+				: null
+		);
 		setOpenTabIds((previousTabs) => previousTabs.map((tabId) => (tabId === closedTabId ? undefined : tabId)));
-		setKey(TABS[openTabIds.find((el) => el !== undefined)!].text);
 	};
 
-	// useEffect(() => {
-	// 	setKey(openTabIds.every((el) => el === undefined) ? null : TABS[openTabIds.find((el) => el !== undefined)!].text);
-	// 	console.log("rodouuu");
-	// }, openTabIds);
+	useEffect(() => {
+		// setKey(openTabIds.every((el) => el === undefined) ? null : TABS[openTabIds.find((el) => el !== undefined)!].text);
+		// console.log("rodouuu");
+		console.log("render");
+		console.log(key);
+	});
 
 	return (
 		<>

@@ -86,8 +86,8 @@ const About = () => {
 									<ListGroup.Item style={{ backgroundColor: "#1d232f", color: "white" }}>
 										<Card.Title>Programadora Júnior - Quickium</Card.Title>
 										<Card.Text>
-											jun 2021 - Atual | Desenvolvimento de soluções empresariais utilizando Inteligência Artificial
-											(Redes Neurais Artificiais e Convolucionais) e Visão Computacional.
+											jun 2021 - Atual | Desenvolvimento de soluções empresariais utilizando Inteligência Artificial (Redes
+											Neurais Artificiais e Convolucionais) e Visão Computacional.
 										</Card.Text>
 									</ListGroup.Item>
 								</ListGroup>
@@ -111,9 +111,7 @@ const About = () => {
 											<ListGroup.Item style={{ backgroundColor: "#1d232f", color: "white" }}>
 												Português: Língua Nativa
 											</ListGroup.Item>
-											<ListGroup.Item style={{ backgroundColor: "#1d232f", color: "white" }}>
-												Inglês: Fluente
-											</ListGroup.Item>
+											<ListGroup.Item style={{ backgroundColor: "#1d232f", color: "white" }}>Inglês: Fluente</ListGroup.Item>
 										</ListGroup>
 									</Card>
 								</div>
@@ -150,9 +148,7 @@ const About = () => {
 										<ListGroup className="list-group-flush">
 											<ListGroup.Item style={{ backgroundColor: "#1d232f", color: "white" }}>
 												<Card.Title>EEG Multipurpose Eye Blink Detector using convolutional neural network</Card.Title>
-												<Card.Text>
-													nov 2021 - Research, Society and Development, DOI: 10.33448/rsd-v10i15.22712.
-												</Card.Text>
+												<Card.Text>nov 2021 - Research, Society and Development, DOI: 10.33448/rsd-v10i15.22712.</Card.Text>
 											</ListGroup.Item>
 										</ListGroup>
 									</Card>
@@ -174,20 +170,20 @@ const About = () => {
 								<ListGroup className="list-group-flush">
 									<ListGroup.Item style={{ backgroundColor: "#1d232f", color: "white" }}>
 										<Card.Title>IFSP - Instituto Federal de Ciência e Tecnologia de São Paulo - Piracicaba</Card.Title>
-										<Card.Text>2019 - Atual | Engenharia de Computação</Card.Text>
+										<Card.Text>2019 - 2023 | Engenharia de Computação</Card.Text>
 									</ListGroup.Item>
 									<ListGroup.Item style={{ backgroundColor: "#1d232f", color: "white" }}>
 										<Card.Title>Iniciação Científica</Card.Title>
 										<Card.Text>
-											ago 2019 - jul 2020 | Desenvolvimento de uma rede neural convolucional (CNN) capaz de detectar
-											artefatos de piscadas em sinais de eletroencefalograma (EEG).
+											ago 2019 - jul 2020 | Desenvolvimento de uma rede neural convolucional (CNN) capaz de detectar artefatos de
+											piscadas em sinais de eletroencefalograma (EEG).
 										</Card.Text>
 									</ListGroup.Item>
 									<ListGroup.Item style={{ backgroundColor: "#1d232f", color: "white" }}>
 										<Card.Title>Iternational Journey of Science and Tecnology - Kennedy Space Center</Card.Title>
 										<Card.Text>
-											set 2016 | Curso sobre ciência, tecnologia, engenharia e matemática (STEM) realizado no Kennedy
-											Space Center - Flórida - EUA.
+											set 2016 | Curso sobre ciência, tecnologia, engenharia e matemática (STEM) realizado no Kennedy Space Center
+											- Flórida - EUA.
 										</Card.Text>
 									</ListGroup.Item>
 								</ListGroup>

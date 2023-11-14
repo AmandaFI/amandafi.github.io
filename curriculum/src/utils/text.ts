@@ -22,16 +22,6 @@ export const skillSectionsPort: skillSectionType = {
 			link: "https://github.com/AmandaFI/MyTopFavorite-Web-Application-Backend/tree/graphql-jwt-version",
 		},
 	],
-	"Desenvolvimento de aplicações front end em React.": [
-		{
-			desc: "Plataforma de mídia social criada uilizando Vite, React, TypeScript e Material UI.",
-			link: "https://github.com/AmandaFI/MyTopFavorite-Web-Application-Frontend",
-		},
-		{
-			desc: "Este portifólio, criado uilizando Vite, React, TypeScript e Bootstrap.",
-			link: "https://github.com/AmandaFI/amandafi.github.io",
-		},
-	],
 	"Criação de redes neurais artificiais (ANN), convolucionais (CNN) e LSTMs.": [
 		{
 			desc: "Diferenciar notícias escritas pelo ChatGPT de nóticias escritos por humanos.",
@@ -43,11 +33,21 @@ export const skillSectionsPort: skillSectionType = {
 		},
 	],
 	"Utilização do paradigma Programação Funcional.": [
-		{ desc: "Closures." },
+		{ desc: "Closures.", link: "https://editor.p5js.org/a.ferrariiaquinta/full/dCnjQUtwU" },
 		{ desc: "Imutabilidade." },
 		{ desc: "Higher-order Functions (HOF)." },
 		{ desc: "Funções puras." },
 		{ desc: "Programação declarativa." },
+	],
+	"Desenvolvimento de aplicações front end em React.": [
+		{
+			desc: "Plataforma de mídia social criada uilizando Vite, React, TypeScript e Material UI.",
+			link: "https://github.com/AmandaFI/MyTopFavorite-Web-Application-Frontend",
+		},
+		{
+			desc: "Este portifólio, criado uilizando Vite, React, TypeScript e Bootstrap.",
+			link: "https://github.com/AmandaFI/amandafi.github.io",
+		},
 	],
 	"Aplicação de métodos de Machine Learning.": [
 		{
@@ -77,12 +77,17 @@ export const skillSectionsPort: skillSectionType = {
 			link: "https://editor.p5js.org/a.ferrariiaquinta/full/WhlweY9Fo",
 		},
 		{
+			desc: "Árvore Binária de Busca interativa.",
+			link: "https://editor.p5js.org/a.ferrariiaquinta/full/dCnjQUtwU",
+		},
+		{
 			desc: "Implementação interativa da curva de Bézier com N pontos arrastáveis.",
 			link: "https://editor.p5js.org/a.ferrariiaquinta/full/WhlweY9Fo",
 		},
 	],
 	"Expressões Regulares.": [{ desc: "Construção e aplicação de RegExp" }],
 	"Utilização de Banco de Dados relacionais.": [{ desc: "PostgreSQL" }, { desc: "MySQL" }],
+	"Docker.": [{ desc: "Containers, imagens e Docker Compose." }],
 	"Git e GitHub.": [
 		{ desc: "Conhecimento do funcionamento interno e da utilização dos comandos de porcelain e plumbing." },
 		{ desc: "Utilização para versionamento de projetos." },
@@ -110,16 +115,6 @@ export const skillSectionsEng: skillSectionType = {
 			link: "https://github.com/AmandaFI/MyTopFavorite-Web-Application-Backend/tree/graphql-jwt-version",
 		},
 	],
-	"Development of front end applications using React.": [
-		{
-			desc: "Social media platform created using Vite, React, TypeScript and Material UI.",
-			link: "https://github.com/AmandaFI/MyTopFavorite-Web-Application-Frontend",
-		},
-		{
-			desc: "This portfolio, created using Vite, React, TypeScript and Bootstrap.",
-			link: "https://github.com/AmandaFI/amandafi.github.io",
-		},
-	],
 	"Implementation of artificial neural networks (ANN), convolutional neural networks (CNN) e LSTMs.": [
 		{
 			desc: "Identify if a news article was written by ChatGPT or by humans.",
@@ -131,11 +126,21 @@ export const skillSectionsEng: skillSectionType = {
 		},
 	],
 	"Code structuring following the Functional Programming paradigm.": [
-		{ desc: "Closures." },
+		{ desc: "Closures.", link: "https://editor.p5js.org/a.ferrariiaquinta/full/dCnjQUtwU" },
 		{ desc: "Imutability." },
 		{ desc: "Higher-order Functions (HOF)." },
 		{ desc: "Pure functions, with no side effects." },
 		{ desc: "Declarative programming." },
+	],
+	"Development of front end applications using React.": [
+		{
+			desc: "Social media platform created using Vite, React, TypeScript and Material UI.",
+			link: "https://github.com/AmandaFI/MyTopFavorite-Web-Application-Frontend",
+		},
+		{
+			desc: "This portfolio, created using Vite, React, TypeScript and Bootstrap.",
+			link: "https://github.com/AmandaFI/amandafi.github.io",
+		},
 	],
 	"Machine learning methods application.": [
 		{
@@ -165,12 +170,17 @@ export const skillSectionsEng: skillSectionType = {
 			link: "https://editor.p5js.org/a.ferrariiaquinta/full/WhlweY9Fo",
 		},
 		{
+			desc: "Interactive Binary Search Tree.",
+			link: "https://editor.p5js.org/a.ferrariiaquinta/full/dCnjQUtwU",
+		},
+		{
 			desc: "Interactive implementation of the Bézier curve with com N draggable points.",
 			link: "https://editor.p5js.org/a.ferrariiaquinta/full/WhlweY9Fo",
 		},
 	],
 	"Regular Expressions.": [{ desc: "Construction and application of regular expressions" }],
 	"Relational database usage.": [{ desc: "PostgreSQL" }, { desc: "MySQL" }],
+	"Docker.": [{ desc: "Containers, images and Docker Compose." }],
 	"Git and GitHub.": [
 		{ desc: "Knowledge about Git internals and about the porcelain and plumbing commands." },
 		{ desc: "Use for project version control." },
