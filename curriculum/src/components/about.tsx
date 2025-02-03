@@ -84,6 +84,17 @@ const About = () => {
                 </Card.Body>
                 <ListGroup className="list-group-flush">
                   <ListGroup.Item style={{ backgroundColor: "#1d232f", color: "white" }}>
+                    <Card.Title>Software Engineer - Google</Card.Title>
+                    <Card.Text>ago 2024 - atual | Software Engineer.</Card.Text>
+                  </ListGroup.Item>
+                  <ListGroup.Item style={{ backgroundColor: "#1d232f", color: "white" }}>
+                    <Card.Title>Freelance Software Developer - Visiontec</Card.Title>
+                    <Card.Text>
+                      jan 2024 - jul 2024 | Desenvolvimento de soluções utilizando Inteligência Artificial e Visão
+                      Computacional. Desenvolvimento Web.
+                    </Card.Text>
+                  </ListGroup.Item>
+                  <ListGroup.Item style={{ backgroundColor: "#1d232f", color: "white" }}>
                     <Card.Title>Programadora Júnior - Quickium</Card.Title>
                     <Card.Text>
                       jun 2021 - dez 2023 | Desenvolvimento de soluções empresariais utilizando Inteligência Artificial
