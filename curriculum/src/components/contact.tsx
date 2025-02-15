@@ -24,7 +24,7 @@ import { CopyBlock, dracula } from "react-code-blocks";
 // 	}
 
 const Contact = () => {
-	const value = `type Contato = "E-mail" | "Telefone" | "Linkedin" | "GitHub"
+  const value = `type Contato = "E-mail" | "Telefone" | "Linkedin" | "GitHub"
 let contactar: Contato = "E-mail"
 
 switch (contactar) {
@@ -45,34 +45,34 @@ switch (contactar) {
 }
 	`;
 
-	return (
-		<div
-			style={{
-				backgroundColor: "#282a36",
-				fontSize: 20,
-				fontFamily: "Fira Code, monospace;",
-				lineHeight: 0.5,
-				display: "flex",
-				flexDirection: "column",
-				height: "84vh",
-			}}
-		>
-			{/* <CodeSection showLineNumbers={true} theme={"dark"} lang={"typescript"}>
+  return (
+    <div
+      style={{
+        backgroundColor: "#282a36",
+        fontSize: 20,
+        fontFamily: "Fira Code, monospace;",
+        lineHeight: 0.5,
+        display: "flex",
+        flexDirection: "column",
+        height: "84vh",
+      }}
+    >
+      {/* <CodeSection showLineNumbers={true} theme={"dark"} lang={"typescript"}>
 				{value}
 			</CodeSection> */}
-			<CopyBlock
-				text={value}
-				language={"typescript"}
-				showLineNumbers={true}
-				startingLineNumber={1}
-				wrapLongLines={true}
-				theme={dracula}
-				codeBlock={false}
-				copied={false}
-				onCopy={() => {}}
-			/>
-		</div>
-	);
+      <CopyBlock
+        text={value}
+        language={"typescript"}
+        showLineNumbers={true}
+        startingLineNumber={1}
+        wrapLongLines={true}
+        theme={{ ...dracula, mode: "dark" }}
+        codeBlock={false}
+        copied={false}
+        onCopy={() => {}}
+      />
+    </div>
+  );
 };
 
 export default Contact;
