@@ -158,6 +158,21 @@ const About = () => {
                     </Card.Body>
                     <ListGroup className="list-group-flush">
                       <ListGroup.Item style={{ backgroundColor: "#1d232f", color: "white" }}>
+                        <Card.Title>
+                          Detection of news written by the ChatGPT through authorship attribution performed by a
+                          Bidirectional LSTM model
+                        </Card.Title>
+                        <Card.Text>
+                          out 2023 -{" "}
+                          <a
+                            href="https://ojs.studiespublicacoes.com.br/ojs/index.php/cadped/article/view/9236"
+                            style={{ color: "#a8b5d1" }}
+                          >
+                            DOI: 10.54033/cadpedv21n10-191.
+                          </a>
+                        </Card.Text>
+                      </ListGroup.Item>
+                      <ListGroup.Item style={{ backgroundColor: "#1d232f", color: "white" }}>
                         <Card.Title>EEG Multipurpose Eye Blink Detector using convolutional neural network</Card.Title>
                         <Card.Text>
                           nov 2021 - Research, Society and Development,{" "}
@@ -166,18 +181,6 @@ const About = () => {
                             style={{ color: "#a8b5d1" }}
                           >
                             DOI: 10.33448/rsd-v10i15.22712.
-                          </a>
-                        </Card.Text>
-                      </ListGroup.Item>
-                      <ListGroup.Item style={{ backgroundColor: "#1d232f", color: "white" }}>
-                        <Card.Title>
-                          Detection of news written by the ChatGPT through authorship attribution performed by a
-                          Bidirectional LSTM model
-                        </Card.Title>
-                        <Card.Text>
-                          out 2023 -{" "}
-                          <a href="https://doi.org/10.48550/arXiv.2310.16685" style={{ color: "#a8b5d1" }}>
-                            DOI: 10.48550/arXiv.2310.16685.
                           </a>
                         </Card.Text>
                       </ListGroup.Item>
