@@ -1,27 +1,4 @@
 import { CopyBlock, dracula } from "react-code-blocks";
-// import { CodeSection } from "react-code-section-lib";
-
-// themes: hybrid, anOldHope, CodeBlock, ocean, zenburn
-
-// type Contato = "E-mail" | "Telefone" | "Linkedin" | "GitHub"
-
-// 	let contactar: Contato = "E-mail"
-// 	let info: String;
-
-// 	switch (comunicacao) {
-// 		case "E-mail":
-// 			info = "";
-// 			break;
-// 		case "Telefone":
-// 			info = "";
-// 			break;
-// 		case "Linkedin":
-// 			info = ""
-// 			break;
-// 		case "GitHub":
-// 			infor = ""
-// 			break;
-// 	}
 
 const Contact = () => {
   const value = `type Contato = "E-mail" | "Telefone" | "Linkedin" | "GitHub"
@@ -50,16 +27,13 @@ switch (contactar) {
       style={{
         backgroundColor: "#282a36",
         fontSize: 20,
-        fontFamily: "Fira Code, monospace;",
+        fontFamily: "Fira Code monospace;",
         lineHeight: 0.5,
         display: "flex",
         flexDirection: "column",
         height: "84vh",
       }}
     >
-      {/* <CodeSection showLineNumbers={true} theme={"dark"} lang={"typescript"}>
-				{value}
-			</CodeSection> */}
       <CopyBlock
         text={value}
         language={"typescript"}

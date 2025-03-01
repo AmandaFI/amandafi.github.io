@@ -1,20 +1,20 @@
 .filesColumnStye {
-	color: "white";
-	width: "100%";
-	text-align: "left";
-	justify-content: "left";
-	font-size: 17;
+  color: "white";
+  width: "100%";
+  text-align: "left";
+  justify-content: "left";
+  font-size: 17;
 }
 
 .filesButton {
-	color: "white";
-	width: "100%";
-	text-align: "left";
-	justify-content: "left";
-	font-size: 17;
-	display: "flex";
-	background-color: #171c26;
-	border: none;
+  color: "white";
+  width: "100%";
+  text-align: "left";
+  justify-content: "left";
+  font-size: 17;
+  display: "flex";
+  background-color: #171c26;
+  border: none;
 }
 
 /* .btn-primary {
@@ -29,57 +29,96 @@
 } */
 
 .leftColumnIconStyle {
-	fill: "#a8b5d1";
-	margin: "6px 13px 6px 8px";
+  fill: "#a8b5d1";
+  margin: "6px 13px 6px 8px";
 }
 
 .gridGeneric {
-	height: 100%;
-	width: 100%;
-	margin: 0;
-	padding: 0;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .topRow {
-	background-color: #1d232f;
-	height: 3vh;
-	color: white;
+  background-color: #1d232f;
+  height: 3vh;
+  color: white;
 }
 
 .middleRow {
-	background-color: green;
-	height: 89vh;
-	color: white;
+  background-color: green;
+  height: 92.3vh;
+  color: white;
 }
 
 .bottonRow {
-	background-color: #171c26;
-	flex-grow: 1;
-	flex-direction: column;
+  background-color: #171c26;
+  flex-grow: 1;
+  flex-direction: column;
 
-	color: white;
-	padding: 0;
-	margin: 0;
+  color: white;
+  padding: 0;
+  margin: 0;
 }
 
 .firstCol {
-	background-color: #141820;
+  background-color: #141820;
 }
 
 .secondCol {
-	background-color: #171c26;
+  background-color: #171c26;
 }
 
 .thirdCol {
-	background-color: #1d232f;
-	padding: 0;
+  background-color: #1d232f;
+  padding: 0;
 }
 
 .wslButton {
-	background-color: #457dff;
+  background-color: #457dff;
 }
 
 .bottonStack {
-	padding: 0;
-	margin: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-tabs .nav-link {
+  background-color: transparent !important;
+  color: #ffffff !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+
+  --bs-nav-tabs-link-hover-border-color: transparent !important;
+  --bs-nav-tabs-border-color: transparent !important;
+}
+
+.div-bottomLeft {
+  padding: 0;
+  margin: 0;
+}
+
+.nav {
+  border-bottom: 0px !important;
+  margin: 0 !important;
+}
+
+.nav-tabs .nav-link.active {
+  background-color: #1d232f !important;
+  border-bottom: 0px !important;
+}
+
+.nav-tabs {
+  background-color: #171c26 !important;
+  display: flex;
+  margin: 0;
+}
+
+.row > * {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+  margin-top: 0 !important;
+  --bs-gutter-x: 0;
 }

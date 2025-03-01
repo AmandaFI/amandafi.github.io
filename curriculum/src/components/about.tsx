@@ -11,8 +11,6 @@ import { RefObject, useEffect, useRef, useState } from "react";
 // https://blog.webdevsimplified.com/2022-01/intersection-observer/
 // https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
 
-// Tornar tabelas Draggable ?
-
 export function useIsVisible(ref: RefObject<HTMLDivElement>) {
   const [isIntersecting, setIntersecting] = useState(false);
 
@@ -56,11 +54,11 @@ const About = () => {
     <>
       <style type="text/css">
         {`
-    .basicCol {
-        height: 100%
-        
-    }
-    `}
+          .basicCol {
+              height: 100%
+              
+          }
+        `}
       </style>
       <Xwrapper>
         <div
@@ -230,22 +228,3 @@ const About = () => {
 };
 
 export default About;
-
-{
-  /* <>
-			<Box
-				sx={{
-					display: "flex",
-					flex: 8,
-					p: 5,
-					pt: 2,
-					justifyContent: "center",
-					flexWrap: "wrap",
-					bgcolor: "#1d232f",
-					height: "82%",
-				}}
-			>
-				<img src={pic} style={{ height: "93%", width: "93%", display: "flex" }}></img>
-			</Box>
-		</> */
-}
